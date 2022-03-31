@@ -105,7 +105,7 @@ class _CreateBudgetWidgetState extends State<CreateBudgetWidget>
                               style:
                                   FlutterFlowTheme.of(context).title1.override(
                                         fontFamily: 'Lexend Deca',
-                                        fontSize: 20,
+                                        fontSize: 18,
                                       ),
                             ),
                             Card(
@@ -117,11 +117,11 @@ class _CreateBudgetWidgetState extends State<CreateBudgetWidget>
                               child: FlutterFlowIconButton(
                                 borderColor: Colors.transparent,
                                 borderRadius: 30,
-                                buttonSize: 48,
+                                buttonSize: 40,
                                 icon: Icon(
                                   Icons.close_rounded,
                                   color: FlutterFlowTheme.of(context).textColor,
-                                  size: 30,
+                                  size: 20,
                                 ),
                                 onPressed: () async {
                                   Navigator.pop(context);

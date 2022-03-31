@@ -118,12 +118,12 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                               ),
                               child: FlutterFlowIconButton(
                                 borderColor: Colors.transparent,
-                                borderRadius: 30,
-                                buttonSize: 48,
+                                borderRadius: 20,
+                                buttonSize: 40,
                                 icon: Icon(
                                   Icons.close_rounded,
                                   color: FlutterFlowTheme.of(context).textColor,
-                                  size: 30,
+                                  size: 20,
                                 ),
                                 onPressed: () async {
                                   Navigator.pop(context);
