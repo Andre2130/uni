@@ -1,6 +1,11 @@
+import '../auth/auth_util.dart';
+import '../bank_account_connect/bank_account_connect_widget.dart';
+import '../create_budget/create_budget_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../main.dart';
+import '../transaction_a_d_d/transaction_a_d_d_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -83,15 +88,28 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                            child: Container(
-                              width: 60,
-                              height: 60,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                              ),
-                              child: Image.asset(
-                                'assets/images/avatar.png',
+                            child: AuthUserStreamWidget(
+                              child: InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => NavBarPage(
+                                          initialPage: 'MY_profilePage'),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 60,
+                                  height: 60,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.network(
+                                    currentUserPhoto,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -115,15 +133,20 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                               Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                                child: Text(
-                                  'Andrew',
-                                  style: FlutterFlowTheme.of(context)
-                                      .title3
-                                      .override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
-                                      ),
+                                child: AuthUserStreamWidget(
+                                  child: Text(
+                                    valueOrDefault<String>(
+                                      currentUserDisplayName,
+                                      'User',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .title3
+                                        .override(
+                                          fontFamily: 'Lexend Deca',
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiaryColor,
+                                        ),
+                                  ),
                                 ),
                               ),
                             ],
@@ -301,26 +324,37 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                 color: FlutterFlowTheme.of(context).background,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.swap_horiz_rounded,
-                                    color:
-                                        FlutterFlowTheme.of(context).textColor,
-                                    size: 40,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 8, 0, 0),
-                                    child: Text(
-                                      'Lend',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                              child: InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          CreateBudgetWidget(),
                                     ),
-                                  ),
-                                ],
+                                  );
+                                },
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.swap_horiz_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .textColor,
+                                      size: 40,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 8, 0, 0),
+                                      child: Text(
+                                        'Lend',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             Container(
@@ -330,26 +364,37 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                 color: FlutterFlowTheme.of(context).background,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.stacked_line_chart_rounded,
-                                    color:
-                                        FlutterFlowTheme.of(context).textColor,
-                                    size: 40,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 8, 0, 0),
-                                    child: Text(
-                                      'Borrow',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                              child: InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          TransactionADDWidget(),
                                     ),
-                                  ),
-                                ],
+                                  );
+                                },
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.stacked_line_chart_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .textColor,
+                                      size: 40,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 8, 0, 0),
+                                      child: Text(
+                                        'Borrow',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             Container(
@@ -359,26 +404,37 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                 color: FlutterFlowTheme.of(context).background,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.account_balance_outlined,
-                                    color:
-                                        FlutterFlowTheme.of(context).textColor,
-                                    size: 40,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 8, 0, 0),
-                                    child: Text(
-                                      'My Bank',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                              child: InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          BankAccountConnectWidget(),
                                     ),
-                                  ),
-                                ],
+                                  );
+                                },
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.account_balance_outlined,
+                                      color: FlutterFlowTheme.of(context)
+                                          .textColor,
+                                      size: 40,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 8, 0, 0),
+                                      child: Text(
+                                        'My Bank',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],

@@ -81,7 +81,7 @@ class _TutorialPROFILEWidgetState extends State<TutorialPROFILEWidget>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/finWallet_logo_landscape.png',
+                    'assets/images/Screen_Shot_2022-03-28_at_3.00.00_PM.png',
                     width: 220,
                     height: 60,
                     fit: BoxFit.fitWidth,
@@ -138,7 +138,7 @@ class _TutorialPROFILEWidgetState extends State<TutorialPROFILEWidget>
                                       children: [
                                         Expanded(
                                           child: Text(
-                                            'Create Budgets',
+                                            'Get a loan',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .title1,

@@ -103,8 +103,8 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                     ),
-                                    child: Image.asset(
-                                      'assets/images/avatar.png',
+                                    child: Image.network(
+                                      mYProfilePageUsersRecord.photoUrl,
                                     ),
                                   ),
                                 ),
