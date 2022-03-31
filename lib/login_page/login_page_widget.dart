@@ -3,7 +3,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../forgot_password/forgot_password_widget.dart';
-import '../home_page_alt_1/home_page_alt1_widget.dart';
+import '../main.dart';
 import '../phonesignin/phonesignin_widget.dart';
 import '../register_account/register_account_widget.dart';
 import 'package:flutter/material.dart';
@@ -270,8 +270,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       await Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                              HomePageAlt1Widget(),
+                                          builder: (context) => NavBarPage(
+                                              initialPage: 'homePage_alt_1'),
                                         ),
                                       );
                                     },

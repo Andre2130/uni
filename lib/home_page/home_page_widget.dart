@@ -1,7 +1,7 @@
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../main.dart';
+import '../m_y_card/m_y_card_widget.dart';
 import '../transfer_funds/transfer_funds_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -432,8 +432,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   await Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          NavBarPage(initialPage: 'MY_Card'),
+                                      builder: (context) => MYCardWidget(),
                                     ),
                                     (r) => false,
                                   );

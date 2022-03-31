@@ -9,10 +9,9 @@ import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/internationalization.dart';
 import 'package:unidemo/login_page/login_page_widget.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'm_y_card/m_y_card_widget.dart';
+import 'home_page_alt_1/home_page_alt1_widget.dart';
 import 'm_y_budgets/m_y_budgets_widget.dart';
 import 'm_y_profile_page/m_y_profile_page_widget.dart';
 
@@ -78,13 +77,10 @@ class _MyAppState extends State<MyApp> {
       home: initialUser == null || displaySplashImage
           ? Container(
               color: Colors.transparent,
-              child: Center(
-                child: Builder(
-                  builder: (context) => Image.asset(
-                    'assets/images/Medical_ScheduleApp_0.0.png',
-                    width: MediaQuery.of(context).size.width,
-                    fit: BoxFit.fitWidth,
-                  ),
+              child: Builder(
+                builder: (context) => Image.asset(
+                  'assets/images/uni1.jpeg',
+                  fit: BoxFit.contain,
                 ),
               ),
             )
@@ -117,7 +113,7 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'MY_Card': MYCardWidget(),
+      'homePage_alt_1': HomePageAlt1Widget(),
       'MY_Budgets': MYBudgetsWidget(),
       'MY_profilePage': MYProfilePageWidget(),
     };
@@ -136,14 +132,10 @@ class _NavBarPageState extends State<NavBarPage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.credit_card,
+              Icons.home_outlined,
               size: 24,
             ),
-            activeIcon: FaIcon(
-              FontAwesomeIcons.solidCreditCard,
-              size: 20,
-            ),
-            label: '•',
+            label: 'Home',
             tooltip: '',
           ),
           BottomNavigationBarItem(

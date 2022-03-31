@@ -5,7 +5,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../home_page_alt_1/home_page_alt1_widget.dart';
+import '../main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -274,7 +274,8 @@ class _CreateBudgetBeginWidgetState extends State<CreateBudgetBeginWidget>
                               await Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => HomePageAlt1Widget(),
+                                  builder: (context) =>
+                                      NavBarPage(initialPage: 'homePage_alt_1'),
                                 ),
                               );
                             },
