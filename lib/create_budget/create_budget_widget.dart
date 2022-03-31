@@ -93,35 +93,43 @@ class _CreateBudgetWidgetState extends State<CreateBudgetWidget>
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Create Budget',
-                            style: FlutterFlowTheme.of(context).title1,
-                          ),
-                          Card(
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            color: FlutterFlowTheme.of(context).background,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                      Align(
+                        alignment: AlignmentDirectional(0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'How much would you like to lend ?',
+                              textAlign: TextAlign.start,
+                              style:
+                                  FlutterFlowTheme.of(context).title1.override(
+                                        fontFamily: 'Lexend Deca',
+                                        fontSize: 20,
+                                      ),
                             ),
-                            child: FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 30,
-                              buttonSize: 48,
-                              icon: Icon(
-                                Icons.close_rounded,
-                                color: FlutterFlowTheme.of(context).textColor,
-                                size: 30,
+                            Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: FlutterFlowTheme.of(context).background,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
                               ),
-                              onPressed: () async {
-                                Navigator.pop(context);
-                              },
+                              child: FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30,
+                                buttonSize: 48,
+                                icon: Icon(
+                                  Icons.close_rounded,
+                                  color: FlutterFlowTheme.of(context).textColor,
+                                  size: 30,
+                                ),
+                                onPressed: () async {
+                                  Navigator.pop(context);
+                                },
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width * 0.8,
@@ -196,7 +204,7 @@ class _CreateBudgetWidgetState extends State<CreateBudgetWidget>
                           controller: budgetNameController,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: 'Budget Name',
+                            labelText: 'Loan Name',
                             labelStyle: FlutterFlowTheme.of(context).subtitle1,
                             hintStyle: FlutterFlowTheme.of(context).bodyText1,
                             enabledBorder: OutlineInputBorder(
@@ -255,6 +263,10 @@ class _CreateBudgetWidgetState extends State<CreateBudgetWidget>
                           textAlign: TextAlign.start,
                           maxLines: 4,
                         ),
+                      ),
+                      Text(
+                        'Only  can lend up to \$1000',
+                        style: FlutterFlowTheme.of(context).bodyText1,
                       ),
                     ],
                   ),
@@ -324,7 +336,7 @@ class _CreateBudgetWidgetState extends State<CreateBudgetWidget>
                                   .update(budgetListUpdateData);
                               Navigator.pop(context);
                             },
-                            text: 'Create Budget',
+                            text: 'Next',
                             options: FFButtonOptions(
                               width: 300,
                               height: 70,

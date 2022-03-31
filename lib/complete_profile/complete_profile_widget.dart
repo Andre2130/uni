@@ -377,7 +377,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                   controller: yourTitleController,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: 'Your SSN',
+                    labelText: 'Your Address',
                     labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Lexend Deca',
                           color: FlutterFlowTheme.of(context).grayLight,

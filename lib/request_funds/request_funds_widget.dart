@@ -17,22 +17,20 @@ class RequestFundsWidget extends StatefulWidget {
 
 class _RequestFundsWidgetState extends State<RequestFundsWidget> {
   String dropDownValue;
-  TextEditingController textController1;
-  TextEditingController textController2;
+  TextEditingController textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
+    textController = TextEditingController();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+      backgroundColor: FlutterFlowTheme.of(context).textColor,
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -69,7 +67,7 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Request Funds',
+                          'Set Loan Amount',
                           style: FlutterFlowTheme.of(context).title1,
                         ),
                         Card(
@@ -95,9 +93,9 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 130, 0, 0),
                       child: TextFormField(
-                        controller: textController1,
+                        controller: textController,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelStyle: FlutterFlowTheme.of(context)
@@ -136,14 +134,25 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                         textAlign: TextAlign.center,
                       ),
                     ),
+                    Align(
+                      alignment: AlignmentDirectional(-0.95, 0.7),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                        child: Text(
+                          'Choose Risk Tolerance ',
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                        ),
+                      ),
+                    ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                       child: FlutterFlowDropDown(
-                        options: [
-                          'Office Budget',
-                          'External Transfer',
-                          'ACH Payment'
-                        ].toList(),
+                        options: ['High Risk ', 'Low Risk'].toList(),
                         onChanged: (val) => setState(() => dropDownValue = val),
                         width: MediaQuery.of(context).size.width * 0.9,
                         height: 60,
@@ -164,37 +173,6 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                         borderRadius: 8,
                         margin: EdgeInsetsDirectional.fromSTEB(20, 20, 12, 20),
                         hidesUnderline: true,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                      child: TextFormField(
-                        controller: textController2,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelStyle: FlutterFlowTheme.of(context).bodyText1,
-                          hintText: 'Reason',
-                          hintStyle: FlutterFlowTheme.of(context).bodyText1,
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).background,
-                              width: 2,
-                            ),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).background,
-                              width: 2,
-                            ),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          contentPadding:
-                              EdgeInsetsDirectional.fromSTEB(20, 32, 24, 0),
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyText1,
-                        textAlign: TextAlign.start,
-                        maxLines: 4,
                       ),
                     ),
                   ],
@@ -223,12 +201,15 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                           ),
                         );
                       },
-                      text: 'Request Funds',
+                      text: 'Lend ',
                       options: FFButtonOptions(
                         width: 300,
                         height: 70,
-                        color: FlutterFlowTheme.of(context).tertiaryColor,
-                        textStyle: FlutterFlowTheme.of(context).title1,
+                        color: Color(0xFF063DFB),
+                        textStyle: FlutterFlowTheme.of(context).title1.override(
+                              fontFamily: 'Lexend Deca',
+                              color: FlutterFlowTheme.of(context).textColor,
+                            ),
                         elevation: 0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
@@ -241,13 +222,6 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                 ),
               ],
             ),
-          ),
-          Text(
-            'Tap above to complete request',
-            style: FlutterFlowTheme.of(context).bodyText1.override(
-                  fontFamily: 'Lexend Deca',
-                  color: Color(0x43000000),
-                ),
           ),
         ],
       ),

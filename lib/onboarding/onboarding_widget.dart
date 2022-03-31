@@ -1,8 +1,6 @@
-import '../create_budget_begin/create_budget_begin_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -119,7 +117,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                       children: [
                                         Expanded(
                                           child: Text(
-                                            'Create Budgets',
+                                            'Lend or Borrow',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .title1,
@@ -136,7 +134,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                       children: [
                                         Expanded(
                                           child: Text(
-                                            'Create budgets that you can tie transactions too in order for easy tracking.',
+                                            'You can lend money and gain profit or borrow money to pay a bill. ',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
@@ -325,49 +323,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                   ),
                 ),
               ],
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        await Navigator.push(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.bottomToTop,
-                            duration: Duration(milliseconds: 220),
-                            reverseDuration: Duration(milliseconds: 220),
-                            child: CreateBudgetBeginWidget(),
-                          ),
-                        );
-                      },
-                      text: 'Create Your Budget',
-                      options: FFButtonOptions(
-                        width: 200,
-                        height: 50,
-                        color: FlutterFlowTheme.of(context).background,
-                        textStyle: FlutterFlowTheme.of(context)
-                            .subtitle2
-                            .override(
-                              fontFamily: 'Lexend Deca',
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                            ),
-                        elevation: 2,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: 30,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ),
           ],
         ),

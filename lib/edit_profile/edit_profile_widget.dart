@@ -308,7 +308,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       ),
                       obscureText: false,
                       decoration: InputDecoration(
-                        labelText: 'Your Title',
+                        labelText: 'Your Address',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText1.override(
                                   fontFamily: 'Lexend Deca',
@@ -342,6 +342,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             fontFamily: 'Lexend Deca',
                             color: FlutterFlowTheme.of(context).textColor,
                           ),
+                      keyboardType: TextInputType.streetAddress,
                     ),
                   ),
                   Padding(

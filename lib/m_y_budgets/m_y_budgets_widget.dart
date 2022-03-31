@@ -81,7 +81,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
         backgroundColor: FlutterFlowTheme.of(context).background,
         automaticallyImplyLeading: false,
         title: Text(
-          'My Budget',
+          'My Loans',
           style: FlutterFlowTheme.of(context).title1,
         ),
         actions: [],
@@ -140,7 +140,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Income',
+                                  'Profit Loans',
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
@@ -212,7 +212,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Income',
+                                  'How much loaned',
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                 ),

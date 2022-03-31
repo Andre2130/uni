@@ -449,7 +449,7 @@ class _RegisterAccountWidgetState extends State<RegisterAccountWidget> {
                               (r) => false,
                             );
                           },
-                          text: 'Continue as Guest',
+                          text: 'Forgot Password ',
                           options: FFButtonOptions(
                             width: 230,
                             height: 50,

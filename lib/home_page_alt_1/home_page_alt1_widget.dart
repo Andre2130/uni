@@ -175,11 +175,14 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Image.asset(
-                                  'assets/images/visa@3x.png',
-                                  width: 44,
-                                  height: 14,
-                                  fit: BoxFit.cover,
+                                Align(
+                                  alignment: AlignmentDirectional(-0.05, 0),
+                                  child: Image.asset(
+                                    'assets/images/uni1-removebg-preview.png',
+                                    width: 100,
+                                    height: 19,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ],
                             ),
@@ -210,7 +213,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  '\$7,630',
+                                  '\$710',
                                   style: FlutterFlowTheme.of(context)
                                       .title1
                                       .override(
@@ -312,7 +315,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 8, 0, 0),
                                     child: Text(
-                                      'Transfer',
+                                      'Lend',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1,
                                     ),
@@ -341,7 +344,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 8, 0, 0),
                                     child: Text(
-                                      'Activity',
+                                      'Borrow',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1,
                                     ),
@@ -434,7 +437,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Go Far Rewards',
+                                      'Car Rental',
                                       style: FlutterFlowTheme.of(context)
                                           .subtitle1
                                           .override(
@@ -447,7 +450,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 4, 0, 0),
                                       child: Text(
-                                        'Income',
+                                        'Payment for Loan',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1,
                                       ),
@@ -479,7 +482,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 4, 0, 0),
                                     child: Text(
-                                      'Hello World',
+                                      'John B',
                                       textAlign: TextAlign.end,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
@@ -539,7 +542,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Go Far Rewards',
+                                        'Change Tire',
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle1
                                             .override(
@@ -553,7 +556,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 4, 0, 0),
                                         child: Text(
-                                          'Income',
+                                          'Payment for Loan',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1,
                                         ),
@@ -571,7 +574,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
-                                      '\$50.00',
+                                      '\$90.00',
                                       textAlign: TextAlign.end,
                                       style: FlutterFlowTheme.of(context)
                                           .subtitle2
@@ -585,7 +588,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 4, 0, 0),
                                       child: Text(
-                                        'Hello World',
+                                        'S. Robinson',
                                         textAlign: TextAlign.end,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -646,7 +649,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Go Far Rewards',
+                                        'Groceries ',
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle1
                                             .override(
@@ -660,7 +663,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 4, 0, 0),
                                         child: Text(
-                                          'Income',
+                                          'Payment from Loan',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1,
                                         ),
@@ -692,7 +695,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 4, 0, 0),
                                       child: Text(
-                                        'Hello World',
+                                        'J. Johnson',
                                         textAlign: TextAlign.end,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1

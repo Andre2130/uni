@@ -116,7 +116,7 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                           child: Text(
-                            'Delete Budget',
+                            'Delete Loan',
                             style: FlutterFlowTheme.of(context).title1,
                           ),
                         ),
@@ -129,7 +129,7 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                             children: [
                               Expanded(
                                 child: Text(
-                                  'If you delete this budget, your transactions will no longer be associated with it.',
+                                  'If you delete this loan, your transactions will no longer be associated with it.',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
@@ -207,7 +207,7 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                                   (r) => false,
                                 );
                               },
-                              text: 'Delete Budget',
+                              text: 'Delete Loan',
                               options: FFButtonOptions(
                                 width: 300,
                                 height: 70,
@@ -227,13 +227,6 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                     ),
                   ],
                 ),
-              ),
-              Text(
-                'Tap above to remove this bude',
-                style: FlutterFlowTheme.of(context).bodyText1.override(
-                      fontFamily: 'Lexend Deca',
-                      color: Color(0x43000000),
-                    ),
               ),
             ],
           ),

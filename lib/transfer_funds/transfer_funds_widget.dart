@@ -123,20 +123,6 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
         opacity: 1,
       ),
     ),
-    'textOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: -220,
-      fadeIn: true,
-      initialState: AnimationState(
-        scale: 0.4,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
   };
 
   @override
@@ -274,7 +260,7 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        '\$7,630',
+                                        '\$710',
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
@@ -412,7 +398,7 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                         controller: textController,
                         obscureText: false,
                         decoration: InputDecoration(
-                          labelText: '\$ Amount',
+                          labelText: '\$50',
                           labelStyle: FlutterFlowTheme.of(context)
                               .title1
                               .override(
@@ -452,7 +438,7 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                             style: FlutterFlowTheme.of(context).bodyText1,
                           ),
                           Text(
-                            '\$7,630',
+                            '\$660',
                             textAlign: TextAlign.end,
                             style: FlutterFlowTheme.of(context)
                                 .subtitle2
@@ -509,13 +495,6 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
               ],
             ).animated([animationsMap['rowOnPageLoadAnimation3']]),
           ),
-          Text(
-            'Tap above to complete transfer',
-            style: FlutterFlowTheme.of(context).bodyText1.override(
-                  fontFamily: 'Lexend Deca',
-                  color: Color(0x43000000),
-                ),
-          ).animated([animationsMap['textOnPageLoadAnimation']]),
         ],
       ),
     );

@@ -5,7 +5,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
+import '../home_page_alt_1/home_page_alt1_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -21,9 +21,7 @@ class CreateBudgetBeginWidget extends StatefulWidget {
 
 class _CreateBudgetBeginWidgetState extends State<CreateBudgetBeginWidget>
     with TickerProviderStateMixin {
-  TextEditingController budgetNameController;
-  TextEditingController textController1;
-  TextEditingController textController3;
+  TextEditingController textController;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
@@ -51,38 +49,32 @@ class _CreateBudgetBeginWidgetState extends State<CreateBudgetBeginWidget>
       this,
     );
 
-    budgetNameController = TextEditingController();
-    textController1 = TextEditingController();
-    textController3 = TextEditingController();
+    textController = TextEditingController();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        automaticallyImplyLeading: true,
+        actions: [],
+        centerTitle: true,
+        elevation: 4,
+      ),
+      backgroundColor: FlutterFlowTheme.of(context).primaryColor,
       body: Form(
         key: formKey,
         autovalidateMode: AutovalidateMode.disabled,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Material(
-              color: Colors.transparent,
-              elevation: 3,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(16),
-                  topLeft: Radius.circular(0),
-                  topRight: Radius.circular(0),
-                ),
-              ),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.8,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).darkBackground,
+            Expanded(
+              child: Material(
+                color: Colors.transparent,
+                elevation: 3,
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(16),
                     bottomRight: Radius.circular(16),
@@ -90,175 +82,132 @@ class _CreateBudgetBeginWidgetState extends State<CreateBudgetBeginWidget>
                     topRight: Radius.circular(0),
                   ),
                 ),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 44, 20, 20),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Create Budget',
-                            style: FlutterFlowTheme.of(context).title1,
-                          ),
-                          Card(
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            color: FlutterFlowTheme.of(context).background,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).darkBackground,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16),
+                      topLeft: Radius.circular(0),
+                      topRight: Radius.circular(0),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 44, 20, 20),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'How much will you like to borrow?',
+                              style:
+                                  FlutterFlowTheme.of(context).title1.override(
+                                        fontFamily: 'Lexend Deca',
+                                        fontSize: 20,
+                                      ),
                             ),
-                            child: FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 30,
-                              buttonSize: 48,
-                              icon: Icon(
-                                Icons.close_rounded,
-                                color: FlutterFlowTheme.of(context).textColor,
-                                size: 30,
+                            Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: FlutterFlowTheme.of(context).background,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
                               ),
-                              onPressed: () async {
-                                Navigator.pop(context);
-                              },
+                              child: FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30,
+                                buttonSize: 48,
+                                icon: Icon(
+                                  Icons.close_rounded,
+                                  color: FlutterFlowTheme.of(context).textColor,
+                                  size: 30,
+                                ),
+                                onPressed: () async {
+                                  Navigator.pop(context);
+                                },
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        height: 100,
-                        constraints: BoxConstraints(
-                          maxWidth: MediaQuery.of(context).size.width * 0.8,
+                          ],
                         ),
-                        decoration: BoxDecoration(),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                          child: TextFormField(
-                            controller: textController1,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelStyle: FlutterFlowTheme.of(context)
-                                  .title1
-                                  .override(
-                                    fontFamily: 'Lexend Deca',
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          height: 100,
+                          constraints: BoxConstraints(
+                            maxWidth: MediaQuery.of(context).size.width * 0.8,
+                          ),
+                          decoration: BoxDecoration(),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                            child: TextFormField(
+                              controller: textController,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelStyle: FlutterFlowTheme.of(context)
+                                    .title1
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: FlutterFlowTheme.of(context)
+                                          .grayLight,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                hintText: 'Amount',
+                                hintStyle: FlutterFlowTheme.of(context)
+                                    .title1
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: FlutterFlowTheme.of(context)
+                                          .grayLight,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
                                     color:
-                                        FlutterFlowTheme.of(context).grayLight,
-                                    fontWeight: FontWeight.w300,
+                                        FlutterFlowTheme.of(context).background,
+                                    width: 2,
                                   ),
-                              hintText: 'Amount',
-                              hintStyle: FlutterFlowTheme.of(context)
-                                  .title1
-                                  .override(
-                                    fontFamily: 'Lexend Deca',
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
                                     color:
-                                        FlutterFlowTheme.of(context).grayLight,
-                                    fontWeight: FontWeight.w300,
+                                        FlutterFlowTheme.of(context).background,
+                                    width: 2,
                                   ),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color:
-                                      FlutterFlowTheme.of(context).background,
-                                  width: 2,
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color:
-                                      FlutterFlowTheme.of(context).background,
-                                  width: 2,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    20, 24, 24, 24),
+                                prefixIcon: Icon(
+                                  Icons.attach_money_rounded,
+                                  color: FlutterFlowTheme.of(context).textColor,
+                                  size: 32,
                                 ),
-                                borderRadius: BorderRadius.circular(8),
                               ),
-                              contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                  20, 24, 24, 24),
-                              prefixIcon: Icon(
-                                Icons.attach_money_rounded,
-                                color: FlutterFlowTheme.of(context).textColor,
-                                size: 32,
-                              ),
-                            ),
-                            style: FlutterFlowTheme.of(context).title1,
-                            textAlign: TextAlign.center,
-                            validator: (val) {
-                              if (val.isEmpty) {
-                                return 'Please enter an amount';
-                              }
+                              style: FlutterFlowTheme.of(context).title1,
+                              textAlign: TextAlign.center,
+                              validator: (val) {
+                                if (val.isEmpty) {
+                                  return 'Please enter an amount';
+                                }
 
-                              return null;
-                            },
-                          ).animated(
-                              [animationsMap['textFieldOnPageLoadAnimation']]),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                        child: TextFormField(
-                          controller: budgetNameController,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelText: 'Budget Name',
-                            labelStyle: FlutterFlowTheme.of(context).subtitle1,
-                            hintStyle: FlutterFlowTheme.of(context).bodyText1,
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).background,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).background,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            contentPadding:
-                                EdgeInsetsDirectional.fromSTEB(20, 32, 24, 32),
+                                return null;
+                              },
+                            ).animated([
+                              animationsMap['textFieldOnPageLoadAnimation']
+                            ]),
                           ),
-                          style: FlutterFlowTheme.of(context).title3,
-                          textAlign: TextAlign.start,
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                        child: TextFormField(
-                          controller: textController3,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelStyle: FlutterFlowTheme.of(context).bodyText1,
-                            hintText: 'Description',
-                            hintStyle: FlutterFlowTheme.of(context).bodyText1,
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).background,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).background,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            contentPadding:
-                                EdgeInsetsDirectional.fromSTEB(20, 40, 24, 0),
-                          ),
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Lexend Deca',
-                                color: FlutterFlowTheme.of(context).textColor,
-                              ),
-                          textAlign: TextAlign.start,
-                          maxLines: 4,
+                        Text(
+                          'Must be between \$20-\$1,000',
+                          style: FlutterFlowTheme.of(context).bodyText1,
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -307,10 +256,8 @@ class _CreateBudgetBeginWidgetState extends State<CreateBudgetBeginWidget>
                           return FFButtonWidget(
                             onPressed: () async {
                               final budgetsCreateData = createBudgetsRecordData(
-                                budetName: budgetNameController.text,
-                                budgetAmount: textController1.text,
+                                budgetAmount: textController.text,
                                 budgetCreated: getCurrentTimestamp,
-                                budgetDescription: textController3.text,
                                 budgetTime: '45 days left',
                                 userBudgets: buttonBudgetListRecord.budgetUser,
                               );
@@ -320,23 +267,22 @@ class _CreateBudgetBeginWidgetState extends State<CreateBudgetBeginWidget>
 
                               final budgetListUpdateData = {
                                 'budget': FieldValue.arrayUnion(
-                                    [budgetNameController.text]),
+                                    [textController.text]),
                               };
                               await buttonBudgetListRecord.reference
                                   .update(budgetListUpdateData);
                               await Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      NavBarPage(initialPage: 'MY_Card'),
+                                  builder: (context) => HomePageAlt1Widget(),
                                 ),
                               );
                             },
-                            text: 'Create Budget',
+                            text: 'Next ',
                             options: FFButtonOptions(
                               width: 300,
                               height: 70,
-                              color: FlutterFlowTheme.of(context).tertiaryColor,
+                              color: FlutterFlowTheme.of(context).primaryColor,
                               textStyle: FlutterFlowTheme.of(context).title1,
                               elevation: 0,
                               borderSide: BorderSide(
@@ -352,13 +298,6 @@ class _CreateBudgetBeginWidgetState extends State<CreateBudgetBeginWidget>
                   ),
                 ],
               ),
-            ),
-            Text(
-              'Tap above to complete request',
-              style: FlutterFlowTheme.of(context).bodyText1.override(
-                    fontFamily: 'Lexend Deca',
-                    color: Color(0x43000000),
-                  ),
             ),
           ],
         ),

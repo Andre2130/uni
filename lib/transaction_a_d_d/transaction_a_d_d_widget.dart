@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
+import '../flutter_flow/flutter_flow_calendar.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -20,61 +21,18 @@ class TransactionADDWidget extends StatefulWidget {
 
 class _TransactionADDWidgetState extends State<TransactionADDWidget>
     with TickerProviderStateMixin {
-  String budgetValue;
-  TextEditingController spentAtController;
-  TextEditingController textController1;
-  TextEditingController reasonController;
+  DateTimeRange calendarSelectedDay;
+  String dropDownValue;
+  TextEditingController textController;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
-    'textFieldOnPageLoadAnimation1': AnimationInfo(
+    'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 40),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-    'textFieldOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 170,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 80),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-    'dropDownOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 200,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 100),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-    'textFieldOnPageLoadAnimation3': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 230,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 120),
         opacity: 0,
       ),
       finalState: AnimationState(
@@ -93,9 +51,11 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
       this,
     );
 
-    reasonController = TextEditingController();
-    spentAtController = TextEditingController();
-    textController1 = TextEditingController();
+    calendarSelectedDay = DateTimeRange(
+      start: DateTime.now().startOfDay,
+      end: DateTime.now().endOfDay,
+    );
+    textController = TextEditingController();
   }
 
   @override
@@ -142,8 +102,11 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Add Transaction',
-                            style: FlutterFlowTheme.of(context).title1,
+                            'How much will you like to borrow?',
+                            style: FlutterFlowTheme.of(context).title1.override(
+                                  fontFamily: 'Lexend Deca',
+                                  fontSize: 20,
+                                ),
                           ),
                           Card(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -177,7 +140,7 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                           child: TextFormField(
-                            controller: textController1,
+                            controller: textController,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelStyle: FlutterFlowTheme.of(context)
@@ -232,143 +195,71 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                               return null;
                             },
                           ).animated(
-                              [animationsMap['textFieldOnPageLoadAnimation1']]),
+                              [animationsMap['textFieldOnPageLoadAnimation']]),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                        child: TextFormField(
-                          controller: spentAtController,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelText: 'Spent At',
-                            labelStyle: FlutterFlowTheme.of(context).bodyText1,
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).background,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
+                      Text(
+                        'How many repayments will you like to make?',
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Lexend Deca',
+                              fontSize: 15,
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).background,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            contentPadding:
-                                EdgeInsetsDirectional.fromSTEB(20, 24, 24, 24),
-                          ),
-                          style: FlutterFlowTheme.of(context).bodyText2,
-                        ).animated(
-                            [animationsMap['textFieldOnPageLoadAnimation2']]),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                        child: StreamBuilder<List<BudgetListRecord>>(
-                          stream: queryBudgetListRecord(
-                            queryBuilder: (budgetListRecord) =>
-                                budgetListRecord.where('budgetUser',
-                                    isEqualTo: currentUserReference),
-                            singleRecord: true,
+                      Expanded(
+                        child: Align(
+                          alignment: AlignmentDirectional(-1, -0.4),
+                          child: FlutterFlowDropDown(
+                            options: ['2  Payments ', '4 Payments'].toList(),
+                            onChanged: (val) =>
+                                setState(() => dropDownValue = val),
+                            width: 180,
+                            height: 50,
+                            textStyle:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Colors.black,
+                                    ),
+                            hintText: 'Please select...',
+                            fillColor: Colors.white,
+                            elevation: 2,
+                            borderColor: Colors.transparent,
+                            borderWidth: 0,
+                            borderRadius: 0,
+                            margin:
+                                EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
+                            hidesUnderline: true,
                           ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 40,
-                                  height: 40,
-                                  child: SpinKitPumpingHeart(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
-                                    size: 40,
-                                  ),
-                                ),
-                              );
-                            }
-                            List<BudgetListRecord> budgetBudgetListRecordList =
-                                snapshot.data;
-                            // Return an empty Container when the document does not exist.
-                            if (snapshot.data.isEmpty) {
-                              return Container();
-                            }
-                            final budgetBudgetListRecord =
-                                budgetBudgetListRecordList.isNotEmpty
-                                    ? budgetBudgetListRecordList.first
-                                    : null;
-                            return FlutterFlowDropDown(
-                              options: budgetBudgetListRecord.budget
-                                  .toList()
-                                  .toList(),
-                              onChanged: (val) =>
-                                  setState(() => budgetValue = val),
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: 60,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Lexend Deca',
-                                    color:
-                                        FlutterFlowTheme.of(context).textColor,
-                                  ),
-                              icon: Icon(
-                                Icons.keyboard_arrow_down_rounded,
-                                color: FlutterFlowTheme.of(context).grayLight,
-                                size: 15,
-                              ),
-                              fillColor:
-                                  FlutterFlowTheme.of(context).darkBackground,
-                              elevation: 2,
-                              borderColor:
-                                  FlutterFlowTheme.of(context).background,
-                              borderWidth: 2,
-                              borderRadius: 8,
-                              margin: EdgeInsetsDirectional.fromSTEB(
-                                  20, 20, 12, 20),
-                              hidesUnderline: true,
-                            ).animated(
-                                [animationsMap['dropDownOnPageLoadAnimation']]);
+                        ),
+                      ),
+                      Text(
+                        ' Select start date ',
+                        textAlign: TextAlign.start,
+                        style: FlutterFlowTheme.of(context).subtitle1,
+                      ),
+                      Expanded(
+                        child: FlutterFlowCalendar(
+                          color: FlutterFlowTheme.of(context).primaryColor,
+                          iconColor: FlutterFlowTheme.of(context).tertiaryColor,
+                          weekFormat: false,
+                          weekStartsMonday: false,
+                          onChange: (DateTimeRange newSelectedDate) {
+                            setState(
+                                () => calendarSelectedDay = newSelectedDate);
                           },
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                        child: TextFormField(
-                          controller: reasonController,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelStyle: FlutterFlowTheme.of(context).bodyText1,
-                            hintText: 'Reason',
-                            hintStyle: FlutterFlowTheme.of(context).bodyText1,
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).background,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).background,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            contentPadding:
-                                EdgeInsetsDirectional.fromSTEB(20, 40, 24, 0),
+                          titleStyle: TextStyle(
+                            color: FlutterFlowTheme.of(context).textColor,
                           ),
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Lexend Deca',
-                                color: FlutterFlowTheme.of(context).textColor,
-                              ),
-                          textAlign: TextAlign.start,
-                          maxLines: 4,
-                        ).animated(
-                            [animationsMap['textFieldOnPageLoadAnimation3']]),
+                          dayOfWeekStyle: TextStyle(
+                            color: FlutterFlowTheme.of(context).textColor,
+                          ),
+                          dateStyle: TextStyle(
+                            color: FlutterFlowTheme.of(context).textColor,
+                          ),
+                          selectedDateStyle: TextStyle(),
+                          inactiveDateStyle: TextStyle(
+                            color: FlutterFlowTheme.of(context).textColor,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -384,10 +275,11 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      StreamBuilder<List<BudgetsRecord>>(
-                        stream: queryBudgetsRecord(
-                          queryBuilder: (budgetsRecord) => budgetsRecord
-                              .where('budetName', isEqualTo: budgetValue),
+                      StreamBuilder<List<LoanRecord>>(
+                        stream: queryLoanRecord(
+                          queryBuilder: (loanRecord) => loanRecord.where(
+                              'LoanAmount',
+                              isEqualTo: textController.text),
                           singleRecord: true,
                         ),
                         builder: (context, snapshot) {
@@ -405,36 +297,34 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                               ),
                             );
                           }
-                          List<BudgetsRecord> buttonBudgetsRecordList =
-                              snapshot.data;
+                          List<LoanRecord> buttonLoanRecordList = snapshot.data;
                           // Return an empty Container when the document does not exist.
                           if (snapshot.data.isEmpty) {
                             return Container();
                           }
-                          final buttonBudgetsRecord =
-                              buttonBudgetsRecordList.isNotEmpty
-                                  ? buttonBudgetsRecordList.first
+                          final buttonLoanRecord =
+                              buttonLoanRecordList.isNotEmpty
+                                  ? buttonLoanRecordList.first
                                   : null;
                           return FFButtonWidget(
                             onPressed: () async {
-                              final transactionsCreateData = {
-                                ...createTransactionsRecordData(
-                                  transactionAmount: textController1.text,
-                                  transactionName: spentAtController.text,
-                                  transactionTime: getCurrentTimestamp,
-                                  transactionReason: reasonController.text,
-                                  user: currentUserReference,
-                                  budgetAssociated:
-                                      buttonBudgetsRecord.reference,
+                              final loanCreateData = createLoanRecordData(
+                                loanName: '',
+                                loanAmount: '',
+                                loanCreated: calendarSelectedDay.start,
+                                loanDescription: '',
+                                loanPayback: calendarSelectedDay.end,
+                                nUmberOfPayments: valueOrDefault<String>(
+                                  dropDownValue,
+                                  'Pay back in fulll',
                                 ),
-                                'categoryName': [budgetValue],
-                              };
-                              await TransactionsRecord.collection
+                              );
+                              await LoanRecord.collection
                                   .doc()
-                                  .set(transactionsCreateData);
+                                  .set(loanCreateData);
                               Navigator.pop(context);
                             },
-                            text: 'Add Transaction',
+                            text: 'Next',
                             options: FFButtonOptions(
                               width: 300,
                               height: 70,
@@ -442,7 +332,7 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                               textStyle: FlutterFlowTheme.of(context).title1,
                               elevation: 0,
                               borderSide: BorderSide(
-                                color: Colors.transparent,
+                                color: FlutterFlowTheme.of(context).textColor,
                                 width: 1,
                               ),
                               borderRadius: 12,
@@ -454,13 +344,6 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                   ),
                 ],
               ),
-            ),
-            Text(
-              'Tap above to complete request',
-              style: FlutterFlowTheme.of(context).bodyText1.override(
-                    fontFamily: 'Lexend Deca',
-                    color: Color(0x43000000),
-                  ),
             ),
           ],
         ),
