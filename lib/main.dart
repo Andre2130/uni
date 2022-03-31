@@ -102,7 +102,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPage = 'MY_Card';
+  String _currentPage = 'homePage_alt_1';
 
   @override
   void initState() {
