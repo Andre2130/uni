@@ -5,7 +5,6 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -27,16 +26,6 @@ class _Bank3WidgetState extends State<Bank3Widget> {
   @override
   void initState() {
     super.initState();
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => NavBarPage(initialPage: 'homePage_alt_1'),
-        ),
-      );
-    });
-
     textController = TextEditingController();
   }
 
@@ -188,10 +177,16 @@ class _Bank3WidgetState extends State<Bank3Widget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 500, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 300, 0, 0),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            NavBarPage(initialPage: 'homePage_alt_1'),
+                      ),
+                    );
                   },
                   text: 'Link',
                   options: FFButtonOptions(
