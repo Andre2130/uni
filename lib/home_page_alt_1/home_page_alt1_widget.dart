@@ -1,6 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/stripe/payment_manager.dart';
-import '../bank/bank_widget.dart';
+import '../bank2/bank2_widget.dart';
 import '../create_budget/create_budget_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -437,7 +437,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                   await Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => BankWidget(),
+                                      builder: (context) => Bank2Widget(),
                                     ),
                                   );
                                 },
