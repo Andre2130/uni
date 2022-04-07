@@ -15,9 +15,13 @@ import 'home_page_alt_1/home_page_alt1_widget.dart';
 import 'm_y_budgets/m_y_budgets_widget.dart';
 import 'm_y_profile_page/m_y_profile_page_widget.dart';
 
+import 'backend/stripe/payment_manager.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  await initializeStripe();
 
   runApp(MyApp());
 }

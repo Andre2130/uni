@@ -1,3 +1,5 @@
+import '../auth/auth_util.dart';
+import '../backend/stripe/payment_manager.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -13,6 +15,7 @@ class LoanlistWidget extends StatefulWidget {
 }
 
 class _LoanlistWidgetState extends State<LoanlistWidget> {
+  String paymentId;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -98,8 +101,30 @@ class _LoanlistWidgetState extends State<LoanlistWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        final paymentResponse =
+                                            await processStripePayment(
+                                          amount: 400,
+                                          currency: 'USD',
+                                          customerEmail: currentUserEmail,
+                                          customerName: 'UNI',
+                                          description: 'UNI Payment',
+                                          allowGooglePay: true,
+                                          allowApplePay: false,
+                                        );
+                                        if (paymentResponse.paymentId == null) {
+                                          if (paymentResponse.errorMessage !=
+                                              null) {
+                                            showSnackbar(
+                                              context,
+                                              'Error: ${paymentResponse.errorMessage}',
+                                            );
+                                          }
+                                          return;
+                                        }
+                                        paymentId = paymentResponse.paymentId;
+
+                                        setState(() {});
                                       },
                                       text: 'Pay Early',
                                       options: FFButtonOptions(

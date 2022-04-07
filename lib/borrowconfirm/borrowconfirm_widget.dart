@@ -2,19 +2,18 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PaymentloanWidget extends StatefulWidget {
-  const PaymentloanWidget({Key key}) : super(key: key);
+class BorrowconfirmWidget extends StatefulWidget {
+  const BorrowconfirmWidget({Key key}) : super(key: key);
 
   @override
-  _PaymentloanWidgetState createState() => _PaymentloanWidgetState();
+  _BorrowconfirmWidgetState createState() => _BorrowconfirmWidgetState();
 }
 
-class _PaymentloanWidgetState extends State<PaymentloanWidget> {
+class _BorrowconfirmWidgetState extends State<BorrowconfirmWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -78,7 +77,7 @@ class _PaymentloanWidgetState extends State<PaymentloanWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
               child: Text(
-                'Payment Confirmed!',
+                'Loan Confirmed!',
                 style: FlutterFlowTheme.of(context).title1.override(
                       fontFamily: 'Lexend Deca',
                       color: Color(0xFF4B39EF),
@@ -90,7 +89,7 @@ class _PaymentloanWidgetState extends State<PaymentloanWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
               child: Text(
-                '\$200.22',
+                '\$400.20',
                 style: GoogleFonts.getFont(
                   'Overpass',
                   color: Colors.white,
@@ -102,7 +101,7 @@ class _PaymentloanWidgetState extends State<PaymentloanWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(24, 8, 24, 0),
               child: Text(
-                'Your payment has been confirmed, it may take 1-2 hours in order for your payment to go through and show up in your transation list.',
+                'Your loan has been confirmed, it may take 1-2 hours in order for your loan to go through and show up in your transation list. The money will be account within 24hrs.',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyText2.override(
                       fontFamily: 'Lexend Deca',
@@ -160,7 +159,7 @@ class _PaymentloanWidgetState extends State<PaymentloanWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                             child: Text(
-                              '\$200.22',
+                              '\$425.24',
                               style: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
@@ -186,14 +185,8 @@ class _PaymentloanWidgetState extends State<PaymentloanWidget> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     FFButtonWidget(
-                      onPressed: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                NavBarPage(initialPage: 'homePage_alt_1'),
-                          ),
-                        );
+                      onPressed: () {
+                        print('Button pressed ...');
                       },
                       text: 'Go Home',
                       options: FFButtonOptions(

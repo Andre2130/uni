@@ -509,7 +509,7 @@ class _MYCardWidgetState extends State<MYCardWidget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 8, 0, 0),
                                     child: Text(
-                                      'Pause Card',
+                                      'Pause Loaning',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1,
                                     ),

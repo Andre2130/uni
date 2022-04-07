@@ -1,6 +1,7 @@
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -97,14 +98,27 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 0, 0, 20),
-                                        child: Image.asset(
-                                          'assets/images/fin_onboarding_1@2x.png',
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.7,
-                                          height: 300,
-                                          fit: BoxFit.fitWidth,
+                                        child: InkWell(
+                                          onTap: () async {
+                                            await Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    NavBarPage(
+                                                        initialPage:
+                                                            'homePage_alt_1'),
+                                              ),
+                                            );
+                                          },
+                                          child: Image.asset(
+                                            'assets/images/fin_onboarding_1@2x.png',
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.7,
+                                            height: 300,
+                                            fit: BoxFit.fitWidth,
+                                          ),
                                         ),
                                       ),
                                     ],
