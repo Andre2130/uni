@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../backend/stripe/payment_manager.dart';
 import '../bank/bank_widget.dart';
 import '../create_budget/create_budget_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
@@ -19,6 +20,8 @@ class HomePageAlt1Widget extends StatefulWidget {
 
 class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
     with TickerProviderStateMixin {
+  String paymentId;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
     'rowOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -49,7 +52,6 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
       ),
     ),
   };
-  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -189,95 +191,124 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                         ),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Align(
-                                  alignment: AlignmentDirectional(-0.05, 0),
-                                  child: Image.asset(
-                                    'assets/images/uni1-removebg-preview.png',
-                                    width: 100,
-                                    height: 19,
-                                    fit: BoxFit.cover,
+                      child: InkWell(
+                        onTap: () async {
+                          final paymentResponse = await processStripePayment(
+                            amount: 710,
+                            currency: 'USD',
+                            customerEmail: currentUserEmail,
+                            customerName: valueOrDefault<String>(
+                              currentUserDisplayName,
+                              'user',
+                            ),
+                            description: 'test',
+                            allowGooglePay: false,
+                            allowApplePay: false,
+                          );
+                          if (paymentResponse.paymentId == null) {
+                            if (paymentResponse.errorMessage != null) {
+                              showSnackbar(
+                                context,
+                                'Error: ${paymentResponse.errorMessage}',
+                              );
+                            }
+                            return;
+                          }
+                          paymentId = paymentResponse.paymentId;
+
+                          setState(() {});
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-0.05, 0),
+                                    child: Image.asset(
+                                      'assets/images/uni1-removebg-preview.png',
+                                      width: 100,
+                                      height: 19,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(20, 36, 20, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  'Balance',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: FlutterFlowTheme.of(context)
-                                            .textColor,
-                                      ),
-                                ),
-                              ],
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(20, 36, 20, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    'Balance',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Lexend Deca',
+                                          color: FlutterFlowTheme.of(context)
+                                              .textColor,
+                                        ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(20, 8, 20, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  '\$710',
-                                  style: FlutterFlowTheme.of(context)
-                                      .title1
-                                      .override(
-                                        fontFamily: 'Lexend Deca',
-                                        fontSize: 32,
-                                      ),
-                                ),
-                              ],
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(20, 8, 20, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    '\$710',
+                                    style: FlutterFlowTheme.of(context)
+                                        .title1
+                                        .override(
+                                          fontFamily: 'Lexend Deca',
+                                          fontSize: 32,
+                                        ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  '**** 0149',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Roboto Mono',
-                                        color: FlutterFlowTheme.of(context)
-                                            .textColor,
-                                      ),
-                                ),
-                                Text(
-                                  '05/25',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Roboto Mono',
-                                        color: FlutterFlowTheme.of(context)
-                                            .textColor,
-                                      ),
-                                ),
-                              ],
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    '**** 0149',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Roboto Mono',
+                                          color: FlutterFlowTheme.of(context)
+                                              .textColor,
+                                        ),
+                                  ),
+                                  Text(
+                                    '05/25',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Roboto Mono',
+                                          color: FlutterFlowTheme.of(context)
+                                              .textColor,
+                                        ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
