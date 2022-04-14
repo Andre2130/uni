@@ -49,8 +49,8 @@ class _BankWidgetState extends State<BankWidget> {
             color: Colors.white,
             size: 30,
           ),
-          onPressed: () async {
-            Navigator.pop(context);
+          onPressed: () {
+            print('IconButton pressed ...');
           },
         ),
         title: Text(

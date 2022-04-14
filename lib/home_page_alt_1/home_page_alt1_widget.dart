@@ -7,6 +7,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
 import '../transaction_a_d_d/transaction_a_d_d_widget.dart';
+import '../transfer_funds/transfer_funds_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -172,52 +173,57 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.92,
-                      height: 190,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 6,
-                            color: Color(0x4B1A1F24),
-                            offset: Offset(0, 2),
-                          )
-                        ],
-                        gradient: LinearGradient(
-                          colors: [Color(0xFF00968A), Color(0xFFF2A384)],
-                          stops: [0, 1],
-                          begin: AlignmentDirectional(0.94, -1),
-                          end: AlignmentDirectional(-0.94, 1),
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: InkWell(
-                        onTap: () async {
-                          final paymentResponse = await processStripePayment(
-                            amount: 710,
-                            currency: 'USD',
-                            customerEmail: currentUserEmail,
-                            customerName: valueOrDefault<String>(
-                              currentUserDisplayName,
-                              'user',
-                            ),
-                            description: 'test',
-                            allowGooglePay: false,
-                            allowApplePay: false,
-                          );
-                          if (paymentResponse.paymentId == null) {
-                            if (paymentResponse.errorMessage != null) {
-                              showSnackbar(
-                                context,
-                                'Error: ${paymentResponse.errorMessage}',
-                              );
-                            }
-                            return;
+                    InkWell(
+                      onTap: () async {
+                        final paymentResponse = await processStripePayment(
+                          amount: 71000,
+                          currency: 'USD',
+                          customerEmail: currentUserEmail,
+                          customerName: currentUserDisplayName,
+                          description: 'loan payment',
+                          allowGooglePay: false,
+                          allowApplePay: false,
+                        );
+                        if (paymentResponse.paymentId == null) {
+                          if (paymentResponse.errorMessage != null) {
+                            showSnackbar(
+                              context,
+                              'Error: ${paymentResponse.errorMessage}',
+                            );
                           }
-                          paymentId = paymentResponse.paymentId;
+                          return;
+                        }
+                        paymentId = paymentResponse.paymentId;
 
-                          setState(() {});
-                        },
+                        setState(() {});
+                      },
+                      onDoubleTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TransferFundsWidget(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.92,
+                        height: 190,
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 6,
+                              color: Color(0x4B1A1F24),
+                              offset: Offset(0, 2),
+                            )
+                          ],
+                          gradient: LinearGradient(
+                            colors: [Color(0xFF00968A), Color(0xFFF2A384)],
+                            stops: [0, 1],
+                            begin: AlignmentDirectional(0.94, -1),
+                            end: AlignmentDirectional(-0.94, 1),
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [

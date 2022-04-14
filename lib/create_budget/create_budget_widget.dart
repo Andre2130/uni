@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../backend/stripe/payment_manager.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -20,7 +19,6 @@ class CreateBudgetWidget extends StatefulWidget {
 
 class _CreateBudgetWidgetState extends State<CreateBudgetWidget>
     with TickerProviderStateMixin {
-  String paymentId;
   TextEditingController budgetNameController;
   TextEditingController textController1;
   TextEditingController textController3;
@@ -336,30 +334,7 @@ class _CreateBudgetWidgetState extends State<CreateBudgetWidget>
                               };
                               await buttonBudgetListRecord.reference
                                   .update(budgetListUpdateData);
-                              final paymentResponse =
-                                  await processStripePayment(
-                                amount: int.parse(textController1.text),
-                                currency: 'USD',
-                                customerEmail: currentUserEmail,
-                                customerName: currentUserDisplayName,
-                                description: 'Pay loan',
-                                allowGooglePay: false,
-                                allowApplePay: false,
-                              );
-                              if (paymentResponse.paymentId == null) {
-                                if (paymentResponse.errorMessage != null) {
-                                  showSnackbar(
-                                    context,
-                                    'Error: ${paymentResponse.errorMessage}',
-                                  );
-                                }
-                                return;
-                              }
-                              paymentId = paymentResponse.paymentId;
-
                               Navigator.pop(context);
-
-                              setState(() {});
                             },
                             text: 'Next',
                             options: FFButtonOptions(
