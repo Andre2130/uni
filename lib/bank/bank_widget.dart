@@ -56,7 +56,7 @@ class _BankWidgetState extends State<BankWidget> {
         title: Text(
           'Link Card or Account',
           style: FlutterFlowTheme.of(context).bodyText1.override(
-                fontFamily: 'Roboto',
+                fontFamily: 'Outfit',
                 color: Colors.white,
                 fontSize: 20,
                 fontWeight: FontWeight.normal,
@@ -130,7 +130,7 @@ class _BankWidgetState extends State<BankWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Outfit',
                                               color: Colors.white,
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
@@ -177,7 +177,7 @@ class _BankWidgetState extends State<BankWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Outfit',
                                     color: Colors.white,
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -282,7 +282,7 @@ class _BankWidgetState extends State<BankWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Outfit',
                                               color: Colors.white,
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
@@ -362,7 +362,7 @@ class _BankWidgetState extends State<BankWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Outfit',
                                               color: Colors.white,
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
@@ -440,7 +440,7 @@ class _BankWidgetState extends State<BankWidget> {
                             color: Colors.white,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Outfit',
                                       color: Color(0xFF1A1F24),
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal,
