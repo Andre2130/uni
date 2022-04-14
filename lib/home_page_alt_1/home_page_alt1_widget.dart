@@ -1,12 +1,12 @@
 import '../auth/auth_util.dart';
 import '../backend/stripe/payment_manager.dart';
 import '../bank/bank_widget.dart';
+import '../borrow_screen/borrow_screen_widget.dart';
 import '../create_budget/create_budget_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
-import '../transaction_a_d_d/transaction_a_d_d_widget.dart';
 import '../transfer_funds/transfer_funds_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -407,7 +407,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          TransactionADDWidget(),
+                                          BorrowScreenWidget(),
                                     ),
                                   );
                                 },
