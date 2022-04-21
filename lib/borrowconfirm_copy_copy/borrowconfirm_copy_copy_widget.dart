@@ -83,11 +83,13 @@ class _BorrowconfirmCopyCopyWidgetState
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(70),
                 ),
-                child: Image.network(
-                  'https://picsum.photos/seed/436/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
+                child: AuthUserStreamWidget(
+                  child: Image.network(
+                    currentUserPhoto,
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
