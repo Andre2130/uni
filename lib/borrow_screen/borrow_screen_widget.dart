@@ -260,96 +260,104 @@ class _BorrowScreenWidgetState extends State<BorrowScreenWidget>
                             color: FlutterFlowTheme.of(context).textColor,
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        StreamBuilder<List<LoanRecord>>(
-                          stream: queryLoanRecord(
-                            queryBuilder: (loanRecord) => loanRecord.where(
-                                'LoanAmount',
-                                isEqualTo: textController.text),
-                            singleRecord: true,
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 40,
-                                  height: 40,
-                                  child: SpinKitPumpingHeart(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
-                                    size: 40,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  StreamBuilder<List<LoanRecord>>(
+                                    stream: queryLoanRecord(
+                                      queryBuilder: (loanRecord) =>
+                                          loanRecord.where('LoanAmount',
+                                              isEqualTo: textController.text),
+                                      singleRecord: true,
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 40,
+                                            height: 40,
+                                            child: SpinKitPumpingHeart(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
+                                              size: 40,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<LoanRecord> buttonLoanRecordList =
+                                          snapshot.data;
+                                      // Return an empty Container when the document does not exist.
+                                      if (snapshot.data.isEmpty) {
+                                        return Container();
+                                      }
+                                      final buttonLoanRecord =
+                                          buttonLoanRecordList.isNotEmpty
+                                              ? buttonLoanRecordList.first
+                                              : null;
+                                      return FFButtonWidget(
+                                        onPressed: () async {
+                                          final loanCreateData =
+                                              createLoanRecordData(
+                                            loanName: '',
+                                            loanAmount: '',
+                                            loanCreated:
+                                                calendarSelectedDay.start,
+                                            loanDescription: '',
+                                            loanPayback:
+                                                calendarSelectedDay.end,
+                                            nUmberOfPayments:
+                                                valueOrDefault<String>(
+                                              dropDownValue,
+                                              'Pay back in fulll',
+                                            ),
+                                          );
+                                          await LoanRecord.collection
+                                              .doc()
+                                              .set(loanCreateData);
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  BorrowconfirmCopyWidget(),
+                                            ),
+                                          );
+                                        },
+                                        text: 'Next',
+                                        options: FFButtonOptions(
+                                          width: 300,
+                                          height: 70,
+                                          color: FlutterFlowTheme.of(context)
+                                              .errorRed,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .title1,
+                                          elevation: 10,
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .textColor,
+                                            width: 1,
+                                          ),
+                                          borderRadius: 12,
+                                        ),
+                                      );
+                                    },
                                   ),
-                                ),
-                              );
-                            }
-                            List<LoanRecord> buttonLoanRecordList =
-                                snapshot.data;
-                            // Return an empty Container when the document does not exist.
-                            if (snapshot.data.isEmpty) {
-                              return Container();
-                            }
-                            final buttonLoanRecord =
-                                buttonLoanRecordList.isNotEmpty
-                                    ? buttonLoanRecordList.first
-                                    : null;
-                            return FFButtonWidget(
-                              onPressed: () async {
-                                final loanCreateData = createLoanRecordData(
-                                  loanName: '',
-                                  loanAmount: '',
-                                  loanCreated: calendarSelectedDay.start,
-                                  loanDescription: '',
-                                  loanPayback: calendarSelectedDay.end,
-                                  nUmberOfPayments: valueOrDefault<String>(
-                                    dropDownValue,
-                                    'Pay back in fulll',
-                                  ),
-                                );
-                                await LoanRecord.collection
-                                    .doc()
-                                    .set(loanCreateData);
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        BorrowconfirmCopyWidget(),
-                                  ),
-                                );
-                              },
-                              text: 'Next',
-                              options: FFButtonOptions(
-                                width: 300,
-                                height: 70,
-                                color:
-                                    FlutterFlowTheme.of(context).tertiaryColor,
-                                textStyle: FlutterFlowTheme.of(context).title1,
-                                elevation: 10,
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).textColor,
-                                  width: 1,
-                                ),
-                                borderRadius: 12,
+                                ],
                               ),
-                            );
-                          },
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ],
