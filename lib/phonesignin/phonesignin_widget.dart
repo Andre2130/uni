@@ -192,8 +192,9 @@ class _PhonesigninWidgetState extends State<PhonesigninWidget> {
                         children: [
                           FFButtonWidget(
                             onPressed: () async {
-                              if (phoneNumberController.text.isEmpty ||
-                                  !phoneNumberController.text.startsWith('+')) {
+                              final phoneNumberVal = phoneNumberController.text;
+                              if (phoneNumberVal.isEmpty ||
+                                  !phoneNumberVal.startsWith('+')) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
@@ -204,7 +205,7 @@ class _PhonesigninWidgetState extends State<PhonesigninWidget> {
                               }
                               await beginPhoneAuth(
                                 context: context,
-                                phoneNumber: phoneNumberController.text,
+                                phoneNumber: phoneNumberVal,
                                 onCodeSent: () async {
                                   await Navigator.pushAndRemoveUntil(
                                     context,

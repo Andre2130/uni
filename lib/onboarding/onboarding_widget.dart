@@ -61,9 +61,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/finWallet_logo_landscape.png',
+                    'assets/images/Screen_Shot_2022-03-28_at_2.42.39_PM-removebg-preview_(2).png',
                     width: 220,
-                    height: 70,
                     fit: BoxFit.fitWidth,
                   ).animated([animationsMap['imageOnPageLoadAnimation']]),
                 ],

@@ -290,7 +290,7 @@ class _RegisterAccountWidgetState extends State<RegisterAccountWidget> {
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0, 24, 0, 24),
+                                    0, 24, 120, 24),
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     if (passwordCreateController.text !=

@@ -192,7 +192,8 @@ class _PhonecodeWidgetState extends State<PhonecodeWidget> {
                         children: [
                           FFButtonWidget(
                             onPressed: () async {
-                              if (phoneNumberController.text.isEmpty) {
+                              final smsCodeVal = phoneNumberController.text;
+                              if (smsCodeVal.isEmpty) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content:
@@ -203,7 +204,7 @@ class _PhonecodeWidgetState extends State<PhonecodeWidget> {
                               }
                               final phoneVerifiedUser = await verifySmsCode(
                                 context: context,
-                                smsCode: phoneNumberController.text,
+                                smsCode: smsCodeVal,
                               );
                               if (phoneVerifiedUser == null) {
                                 return;

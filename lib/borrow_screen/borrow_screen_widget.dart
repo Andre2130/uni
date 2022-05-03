@@ -196,6 +196,33 @@ class _BorrowScreenWidgetState extends State<BorrowScreenWidget> {
                         ),
                       ),
                     ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            valueOrDefault<String>(
+                              dateTimeFormat('MMMMEEEEd', datePicked1),
+                              'Start',
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyText1,
+                          ),
+                          Text(
+                            ' - ',
+                            style: FlutterFlowTheme.of(context).bodyText1,
+                          ),
+                          Text(
+                            valueOrDefault<String>(
+                              dateTimeFormat('MMMMEEEEd', datePicked2),
+                              'End',
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyText1,
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
