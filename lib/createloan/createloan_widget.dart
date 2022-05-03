@@ -10,14 +10,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CreateBudgetWidget extends StatefulWidget {
-  const CreateBudgetWidget({Key key}) : super(key: key);
+class CreateloanWidget extends StatefulWidget {
+  const CreateloanWidget({Key key}) : super(key: key);
 
   @override
-  _CreateBudgetWidgetState createState() => _CreateBudgetWidgetState();
+  _CreateloanWidgetState createState() => _CreateloanWidgetState();
 }
 
-class _CreateBudgetWidgetState extends State<CreateBudgetWidget>
+class _CreateloanWidgetState extends State<CreateloanWidget>
     with TickerProviderStateMixin {
   TextEditingController budgetNameController;
   TextEditingController textController1;

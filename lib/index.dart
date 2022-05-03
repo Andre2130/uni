@@ -15,7 +15,7 @@ export 'budget_details/budget_details_widget.dart' show BudgetDetailsWidget;
 export 'transfer_funds/transfer_funds_widget.dart' show TransferFundsWidget;
 export 'transfer_complete/transfer_complete_widget.dart'
     show TransferCompleteWidget;
-export 'create_budget/create_budget_widget.dart' show CreateBudgetWidget;
+export 'createloan/createloan_widget.dart' show CreateloanWidget;
 export 'transaction_a_d_d/transaction_a_d_d_widget.dart'
     show TransactionADDWidget;
 export 'transaction_e_d_i_t/transaction_e_d_i_t_widget.dart'
@@ -40,8 +40,7 @@ export 'borrowconfirm/borrowconfirm_widget.dart' show BorrowconfirmWidget;
 export 'bank_account_connect/bank_account_connect_widget.dart'
     show BankAccountConnectWidget;
 export 'loanconfirm/loanconfirm_widget.dart' show LoanconfirmWidget;
-export 'borrowconfirm_copy/borrowconfirm_copy_widget.dart'
-    show BorrowconfirmCopyWidget;
+export 'loanconfirmcopy/loanconfirmcopy_widget.dart' show LoanconfirmcopyWidget;
 export 'borrowconfirm_copy_copy/borrowconfirm_copy_copy_widget.dart'
     show BorrowconfirmCopyCopyWidget;
 export 'borrow_screen/borrow_screen_widget.dart' show BorrowScreenWidget;

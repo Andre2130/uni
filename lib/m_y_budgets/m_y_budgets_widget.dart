@@ -1,7 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../budget_details/budget_details_widget.dart';
-import '../create_budget/create_budget_widget.dart';
+import '../createloan/createloan_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -97,7 +97,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
               type: PageTransitionType.bottomToTop,
               duration: Duration(milliseconds: 220),
               reverseDuration: Duration(milliseconds: 220),
-              child: CreateBudgetWidget(),
+              child: CreateloanWidget(),
             ),
           );
         },

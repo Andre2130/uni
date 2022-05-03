@@ -2,7 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/stripe/payment_manager.dart';
 import '../bank/bank_widget.dart';
 import '../borrow_screen/borrow_screen_widget.dart';
-import '../create_budget/create_budget_widget.dart';
+import '../createloan/createloan_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -366,8 +366,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                   await Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          CreateBudgetWidget(),
+                                      builder: (context) => CreateloanWidget(),
                                     ),
                                   );
                                 },
