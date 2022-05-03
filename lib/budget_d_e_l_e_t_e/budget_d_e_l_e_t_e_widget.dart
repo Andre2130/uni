@@ -187,13 +187,6 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                               onPressed: () async {
                                 await budgetDELETEBudgetsRecord.reference
                                     .delete();
-
-                                final budgetListUpdateData = {
-                                  'budget': FieldValue.arrayRemove(
-                                      [budgetDELETEBudgetsRecord.budetName]),
-                                };
-                                await buttonBudgetListRecord.reference
-                                    .update(budgetListUpdateData);
                                 await Navigator.pushAndRemoveUntil(
                                   context,
                                   PageTransition(
