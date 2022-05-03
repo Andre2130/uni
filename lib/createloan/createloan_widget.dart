@@ -327,13 +327,6 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                               await BudgetsRecord.collection
                                   .doc()
                                   .set(budgetsCreateData);
-
-                              final budgetListUpdateData = {
-                                'budget': FieldValue.arrayUnion(
-                                    [budgetNameController.text]),
-                              };
-                              await buttonBudgetListRecord.reference
-                                  .update(budgetListUpdateData);
                               Navigator.pop(context);
                             },
                             text: 'Next',
