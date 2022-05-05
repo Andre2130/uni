@@ -121,7 +121,12 @@ class _BorrowconfirmCopyCopyWidgetState
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
               child: Text(
-                '\$100.20',
+                formatNumber(
+                  widget.amount,
+                  formatType: FormatType.decimal,
+                  decimalType: DecimalType.automatic,
+                  currency: '\$',
+                ),
                 style: GoogleFonts.getFont(
                   'Overpass',
                   color: Colors.white,
@@ -191,7 +196,12 @@ class _BorrowconfirmCopyCopyWidgetState
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                             child: Text(
-                              '\$100.20',
+                              formatNumber(
+                                widget.amount,
+                                formatType: FormatType.decimal,
+                                decimalType: DecimalType.automatic,
+                                currency: '\$',
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
