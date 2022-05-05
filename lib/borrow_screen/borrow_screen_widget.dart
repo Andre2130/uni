@@ -53,22 +53,12 @@ class _BorrowScreenWidgetState extends State<BorrowScreenWidget> {
         },
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         elevation: 8,
-        label: InkWell(
-          onTap: () async {
-            await Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => BorrowconfirmCopyCopyWidget(),
+        label: Text(
+          'Borrow',
+          style: FlutterFlowTheme.of(context).bodyText1.override(
+                fontFamily: 'Lexend Deca',
+                color: FlutterFlowTheme.of(context).textColor,
               ),
-            );
-          },
-          child: Text(
-            'Borrow',
-            style: FlutterFlowTheme.of(context).bodyText1.override(
-                  fontFamily: 'Lexend Deca',
-                  color: FlutterFlowTheme.of(context).textColor,
-                ),
-          ),
         ),
       ),
       body: Stack(
@@ -97,7 +87,6 @@ class _BorrowScreenWidgetState extends State<BorrowScreenWidget> {
                         controller: textController,
                         obscureText: false,
                         decoration: InputDecoration(
-                          labelText: 'Amount',
                           hintText: 'Amount',
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
