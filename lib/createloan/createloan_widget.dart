@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../loanconfirm/loanconfirm_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -19,11 +20,6 @@ class CreateloanWidget extends StatefulWidget {
 
 class _CreateloanWidgetState extends State<CreateloanWidget>
     with TickerProviderStateMixin {
-  TextEditingController budgetNameController;
-  TextEditingController textController1;
-  TextEditingController textController3;
-  final formKey = GlobalKey<FormState>();
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -39,6 +35,11 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
       ),
     ),
   };
+  final formKey = GlobalKey<FormState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  TextEditingController budgetNameController;
+  TextEditingController textController1;
+  TextEditingController textController3;
 
   @override
   void initState() {
@@ -144,6 +145,7 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                             controller: textController1,
                             obscureText: false,
                             decoration: InputDecoration(
+                              labelText: 'Amount',
                               labelStyle: FlutterFlowTheme.of(context)
                                   .title1
                                   .override(
@@ -187,8 +189,9 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                             ),
                             style: FlutterFlowTheme.of(context).title1,
                             textAlign: TextAlign.center,
+                            keyboardType: TextInputType.number,
                             validator: (val) {
-                              if (val.isEmpty) {
+                              if (val == null || val.isEmpty) {
                                 return 'Please enter an amount';
                               }
 
@@ -234,6 +237,7 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                           controller: textController3,
                           obscureText: false,
                           decoration: InputDecoration(
+                            labelText: 'Description',
                             labelStyle: FlutterFlowTheme.of(context).bodyText1,
                             hintText: 'Description',
                             hintStyle: FlutterFlowTheme.of(context).bodyText1,
@@ -327,7 +331,14 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                               await BudgetsRecord.collection
                                   .doc()
                                   .set(budgetsCreateData);
-                              Navigator.pop(context);
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoanconfirmWidget(
+                                    amount: double.parse(textController1.text),
+                                  ),
+                                ),
+                              );
                             },
                             text: 'Next',
                             options: FFButtonOptions(

@@ -15,8 +15,8 @@ class ChangePasswordWidget extends StatefulWidget {
 }
 
 class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
-  TextEditingController emailAddressController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  TextEditingController emailAddressController;
 
   @override
   Widget build(BuildContext context) {

@@ -18,8 +18,8 @@ class BankWidget extends StatefulWidget {
 }
 
 class _BankWidgetState extends State<BankWidget> {
-  TextEditingController textController;
   bool checkboxListTileValue1;
+  TextEditingController textController;
   final creditCardFormKey = GlobalKey<FormState>();
   CreditCardModel creditCardInfo = emptyCreditCard();
   bool checkboxListTileValue2;
@@ -420,36 +420,39 @@ class _BankWidgetState extends State<BankWidget> {
                           ),
                         ),
                       if (checkboxListTileValue1 ?? true)
-                        FFButtonWidget(
-                          onPressed: () async {
-                            await Navigator.push(
-                              context,
-                              PageTransition(
-                                type: PageTransitionType.bottomToTop,
-                                duration: Duration(milliseconds: 300),
-                                reverseDuration: Duration(milliseconds: 300),
-                                child:
-                                    NavBarPage(initialPage: 'homePage_alt_1'),
+                        AuthUserStreamWidget(
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              await Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.bottomToTop,
+                                  duration: Duration(milliseconds: 300),
+                                  reverseDuration: Duration(milliseconds: 300),
+                                  child:
+                                      NavBarPage(initialPage: 'homePage_alt_1'),
+                                ),
+                              );
+                            },
+                            text: currentUserDisplayName,
+                            options: FFButtonOptions(
+                              width: 270,
+                              height: 50,
+                              color: Colors.white,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .subtitle2
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: Color(0xFF1A1F24),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
                               ),
-                            );
-                          },
-                          text: currentUserUid,
-                          options: FFButtonOptions(
-                            width: 270,
-                            height: 50,
-                            color: Colors.white,
-                            textStyle:
-                                FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Outfit',
-                                      color: Color(0xFF1A1F24),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1,
+                              borderRadius: 12,
                             ),
-                            borderRadius: 12,
                           ),
                         ),
                       if (checkboxListTileValue2 ?? true)

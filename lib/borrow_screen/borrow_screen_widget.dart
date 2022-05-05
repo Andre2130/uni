@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../borrowconfirm_copy_copy/borrowconfirm_copy_copy_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -40,18 +41,34 @@ class _BorrowScreenWidgetState extends State<BorrowScreenWidget> {
           await Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => BorrowconfirmCopyCopyWidget(),
+              builder: (context) => BorrowconfirmCopyCopyWidget(
+                amount: double.parse(textController.text),
+                profileImage: currentUserPhoto,
+                borrowPeriodStart: dateTimeFormat('MMMMEEEEd', datePicked1),
+                borrowPeriodEnd: dateTimeFormat('MMMMEEEEd', datePicked2),
+                numberOfPayments: dropDownValue,
+              ),
             ),
           );
         },
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         elevation: 8,
-        label: Text(
-          'Borrow',
-          style: FlutterFlowTheme.of(context).bodyText1.override(
-                fontFamily: 'Lexend Deca',
-                color: FlutterFlowTheme.of(context).textColor,
+        label: InkWell(
+          onTap: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => BorrowconfirmCopyCopyWidget(),
               ),
+            );
+          },
+          child: Text(
+            'Borrow',
+            style: FlutterFlowTheme.of(context).bodyText1.override(
+                  fontFamily: 'Lexend Deca',
+                  color: FlutterFlowTheme.of(context).textColor,
+                ),
+          ),
         ),
       ),
       body: Stack(
@@ -80,6 +97,7 @@ class _BorrowScreenWidgetState extends State<BorrowScreenWidget> {
                         controller: textController,
                         obscureText: false,
                         decoration: InputDecoration(
+                          labelText: 'Amount',
                           hintText: 'Amount',
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -113,7 +131,7 @@ class _BorrowScreenWidgetState extends State<BorrowScreenWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                       child: FlutterFlowDropDown(
-                        options: ['Option 1'].toList(),
+                        options: ['2 payments', '4 payments'].toList(),
                         onChanged: (val) => setState(() => dropDownValue = val),
                         width: 180,
                         height: 50,

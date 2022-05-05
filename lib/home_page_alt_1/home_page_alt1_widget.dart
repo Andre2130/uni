@@ -21,8 +21,6 @@ class HomePageAlt1Widget extends StatefulWidget {
 
 class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
     with TickerProviderStateMixin {
-  String paymentId;
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
     'rowOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -53,6 +51,8 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
       ),
     ),
   };
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  String paymentId;
 
   @override
   void initState() {
@@ -567,7 +567,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Text(
-                                        '\$50.00',
+                                        '\$100.00',
                                         textAlign: TextAlign.end,
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2
@@ -732,7 +732,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Chnage Tire',
+                                          'Birthday Party',
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle1
                                               .override(
@@ -765,7 +765,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Text(
-                                        '\$90.00',
+                                        '\$200.00',
                                         textAlign: TextAlign.end,
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2
@@ -930,7 +930,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Chnage Tire',
+                                          'Rent  Help',
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle1
                                               .override(
@@ -945,7 +945,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0, 4, 0, 0),
                                           child: Text(
-                                            'Payment for Loan',
+                                            'Borrowed',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1,
                                           ),
@@ -963,7 +963,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Text(
-                                        '\$90.00',
+                                        '\$900.00',
                                         textAlign: TextAlign.end,
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2
@@ -971,14 +971,14 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                               fontFamily: 'Lexend Deca',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .tertiaryColor,
+                                                      .errorRed,
                                             ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 4, 0, 0),
                                         child: Text(
-                                          'S. Robinson',
+                                          'Tom Curry',
                                           textAlign: TextAlign.end,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -1029,7 +1029,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Chnage Tire',
+                                          'Gas Money',
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle1
                                               .override(
@@ -1062,7 +1062,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Text(
-                                        '\$90.00',
+                                        '\$50.00',
                                         textAlign: TextAlign.end,
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2

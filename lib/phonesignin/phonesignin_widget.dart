@@ -15,8 +15,8 @@ class PhonesigninWidget extends StatefulWidget {
 }
 
 class _PhonesigninWidgetState extends State<PhonesigninWidget> {
-  TextEditingController phoneNumberController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  TextEditingController phoneNumberController;
 
   @override
   void initState() {

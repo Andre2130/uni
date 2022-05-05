@@ -132,11 +132,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             'Uploading file...',
                             showLoading: true,
                           );
-                          final downloadUrls = await Future.wait(
-                              selectedMedia.map((m) async =>
-                                  await uploadData(m.storagePath, m.bytes)));
+                          final downloadUrls = (await Future.wait(selectedMedia
+                                  .map((m) async => await uploadData(
+                                      m.storagePath, m.bytes))))
+                              .where((u) => u != null)
+                              .toList();
                           ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                          if (downloadUrls != null) {
+                          if (downloadUrls != null &&
+                              downloadUrls.length == selectedMedia.length) {
                             setState(
                                 () => uploadedFileUrl = downloadUrls.first);
                             showUploadMessage(

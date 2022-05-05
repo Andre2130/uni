@@ -192,7 +192,7 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                               textAlign: TextAlign.center,
                               keyboardType: TextInputType.number,
                               validator: (val) {
-                                if (val.isEmpty) {
+                                if (val == null || val.isEmpty) {
                                   return 'Please enter an amount';
                                 }
 

@@ -9,7 +9,20 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BorrowconfirmCopyCopyWidget extends StatefulWidget {
-  const BorrowconfirmCopyCopyWidget({Key key}) : super(key: key);
+  const BorrowconfirmCopyCopyWidget({
+    Key key,
+    this.amount,
+    this.profileImage,
+    this.borrowPeriodStart,
+    this.borrowPeriodEnd,
+    this.numberOfPayments,
+  }) : super(key: key);
+
+  final double amount;
+  final String profileImage;
+  final String borrowPeriodStart;
+  final String borrowPeriodEnd;
+  final String numberOfPayments;
 
   @override
   _BorrowconfirmCopyCopyWidgetState createState() =>
@@ -195,6 +208,50 @@ class _BorrowconfirmCopyCopyWidgetState
                   ],
                 ),
               ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  'Borrow Period',
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Lexend Deca',
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
+                Text(
+                  widget.borrowPeriodStart,
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                ),
+                Text(
+                  '-',
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                ),
+                Text(
+                  widget.borrowPeriodEnd,
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  'Number of payments',
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Lexend Deca',
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
+                Text(
+                  widget.numberOfPayments,
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                ),
+              ],
             ),
             Expanded(
               child: Padding(

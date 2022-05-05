@@ -2,12 +2,18 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoanconfirmWidget extends StatefulWidget {
-  const LoanconfirmWidget({Key key}) : super(key: key);
+  const LoanconfirmWidget({
+    Key key,
+    this.amount,
+  }) : super(key: key);
+
+  final double amount;
 
   @override
   _LoanconfirmWidgetState createState() => _LoanconfirmWidgetState();
@@ -89,7 +95,12 @@ class _LoanconfirmWidgetState extends State<LoanconfirmWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
               child: Text(
-                '\$400.24',
+                formatNumber(
+                  widget.amount,
+                  formatType: FormatType.decimal,
+                  decimalType: DecimalType.automatic,
+                  currency: '\$',
+                ),
                 style: GoogleFonts.getFont(
                   'Overpass',
                   color: Colors.white,
@@ -159,7 +170,12 @@ class _LoanconfirmWidgetState extends State<LoanconfirmWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                             child: Text(
-                              '\$400.24',
+                              formatNumber(
+                                widget.amount,
+                                formatType: FormatType.decimal,
+                                decimalType: DecimalType.automatic,
+                                currency: '\$',
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
@@ -185,8 +201,14 @@ class _LoanconfirmWidgetState extends State<LoanconfirmWidget> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                NavBarPage(initialPage: 'homePage_alt_1'),
+                          ),
+                        );
                       },
                       text: 'Go Home',
                       options: FFButtonOptions(

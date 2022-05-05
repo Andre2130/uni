@@ -19,12 +19,12 @@ class RegisterAccountWidget extends StatefulWidget {
 }
 
 class _RegisterAccountWidgetState extends State<RegisterAccountWidget> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController emailAddressController;
   TextEditingController passwordCreateController;
   bool passwordCreateVisibility;
   TextEditingController passwordConfirmController;
   bool passwordConfirmVisibility;
-  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
