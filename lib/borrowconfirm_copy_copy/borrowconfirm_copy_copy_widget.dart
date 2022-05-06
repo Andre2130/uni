@@ -219,49 +219,55 @@ class _BorrowconfirmCopyCopyWidgetState
                 ),
               ),
             ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'Borrow Period',
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Lexend Deca',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                      ),
-                ),
-                Text(
-                  widget.borrowPeriodStart,
-                  style: FlutterFlowTheme.of(context).bodyText1,
-                ),
-                Text(
-                  '-',
-                  style: FlutterFlowTheme.of(context).bodyText1,
-                ),
-                Text(
-                  widget.borrowPeriodEnd,
-                  style: FlutterFlowTheme.of(context).bodyText1,
-                ),
-              ],
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(20, 50, 20, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'Borrow Period',
+                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily: 'Lexend Deca',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                  Text(
+                    widget.borrowPeriodStart,
+                    style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
+                  Text(
+                    '-',
+                    style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
+                  Text(
+                    widget.borrowPeriodEnd,
+                    style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
+                ],
+              ),
             ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'Number of payments',
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Lexend Deca',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                      ),
-                ),
-                Text(
-                  widget.numberOfPayments,
-                  style: FlutterFlowTheme.of(context).bodyText1,
-                ),
-              ],
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'Number of payments',
+                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily: 'Lexend Deca',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                  Text(
+                    widget.numberOfPayments,
+                    style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
+                ],
+              ),
             ),
             Expanded(
               child: Padding(

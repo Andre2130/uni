@@ -154,7 +154,6 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                                         FlutterFlowTheme.of(context).grayLight,
                                     fontWeight: FontWeight.w300,
                                   ),
-                              hintText: 'Amount',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .title1
                                   .override(
@@ -207,8 +206,8 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                           controller: budgetNameController,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: 'Loan Name',
                             labelStyle: FlutterFlowTheme.of(context).subtitle1,
+                            hintText: 'Loan Name',
                             hintStyle: FlutterFlowTheme.of(context).bodyText1,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -237,7 +236,6 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                           controller: textController3,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: 'Description',
                             labelStyle: FlutterFlowTheme.of(context).bodyText1,
                             hintText: 'Description',
                             hintStyle: FlutterFlowTheme.of(context).bodyText1,
