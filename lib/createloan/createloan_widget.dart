@@ -104,42 +104,51 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                       children: [
                         Align(
                           alignment: AlignmentDirectional(0, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'How much would you like to lend ?',
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .title1
-                                    .override(
-                                      fontFamily: 'Lexend Deca',
-                                      fontSize: 18,
-                                    ),
-                              ),
-                              Card(
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color: FlutterFlowTheme.of(context).background,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'How much would you like to lend ?',
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context)
+                                      .title1
+                                      .override(
+                                        fontFamily: 'Lexend Deca',
+                                        fontSize: 18,
+                                      ),
                                 ),
-                                child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 30,
-                                  buttonSize: 40,
-                                  icon: Icon(
-                                    Icons.close_rounded,
-                                    color:
-                                        FlutterFlowTheme.of(context).textColor,
-                                    size: 20,
+                                Card(
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                                  color:
+                                      FlutterFlowTheme.of(context).background,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30),
                                   ),
-                                  onPressed: () async {
-                                    Navigator.pop(context);
-                                  },
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 1, 0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30,
+                                      buttonSize: 40,
+                                      icon: Icon(
+                                        Icons.close_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .textColor,
+                                        size: 20,
+                                      ),
+                                      onPressed: () async {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                         Container(
