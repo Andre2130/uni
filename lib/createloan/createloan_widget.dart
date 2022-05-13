@@ -1,13 +1,16 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
+import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
+import '../flutter_flow/flutter_flow_radio_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../loanconfirm/loanconfirm_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,6 +23,15 @@ class CreateloanWidget extends StatefulWidget {
 
 class _CreateloanWidgetState extends State<CreateloanWidget>
     with TickerProviderStateMixin {
+  String radioButtonValue;
+  TextEditingController budgetNameController;
+  TextEditingController textController1;
+  TextEditingController textController3;
+  double ratingBarValue;
+  String dropDownValue1;
+  String dropDownValue2;
+  final formKey = GlobalKey<FormState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -35,11 +47,6 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
       ),
     ),
   };
-  final formKey = GlobalKey<FormState>();
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-  TextEditingController budgetNameController;
-  TextEditingController textController1;
-  TextEditingController textController3;
 
   @override
   void initState() {
@@ -91,78 +98,132 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                 ),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(20, 44, 20, 20),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(0, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'How much would you like to lend ?',
-                              textAlign: TextAlign.start,
-                              style:
-                                  FlutterFlowTheme.of(context).title1.override(
-                                        fontFamily: 'Lexend Deca',
-                                        fontSize: 18,
-                                      ),
-                            ),
-                            Card(
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              color: FlutterFlowTheme.of(context).background,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(0, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'How much would you like to lend ?',
+                                textAlign: TextAlign.start,
+                                style: FlutterFlowTheme.of(context)
+                                    .title1
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      fontSize: 18,
+                                    ),
                               ),
-                              child: FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderRadius: 30,
-                                buttonSize: 40,
-                                icon: Icon(
-                                  Icons.close_rounded,
-                                  color: FlutterFlowTheme.of(context).textColor,
-                                  size: 20,
+                              Card(
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                color: FlutterFlowTheme.of(context).background,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
                                 ),
-                                onPressed: () async {
-                                  Navigator.pop(context);
-                                },
+                                child: FlutterFlowIconButton(
+                                  borderColor: Colors.transparent,
+                                  borderRadius: 30,
+                                  buttonSize: 40,
+                                  icon: Icon(
+                                    Icons.close_rounded,
+                                    color:
+                                        FlutterFlowTheme.of(context).textColor,
+                                    size: 20,
+                                  ),
+                                  onPressed: () async {
+                                    Navigator.pop(context);
+                                  },
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        height: 100,
-                        constraints: BoxConstraints(
-                          maxWidth: MediaQuery.of(context).size.width * 0.8,
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          height: 100,
+                          constraints: BoxConstraints(
+                            maxWidth: MediaQuery.of(context).size.width * 0.8,
+                          ),
+                          decoration: BoxDecoration(),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                            child: TextFormField(
+                              controller: textController1,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'Amount',
+                                labelStyle: FlutterFlowTheme.of(context)
+                                    .title1
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: FlutterFlowTheme.of(context)
+                                          .grayLight,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                hintText: '\$1000 max',
+                                hintStyle: FlutterFlowTheme.of(context)
+                                    .title1
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: FlutterFlowTheme.of(context)
+                                          .grayLight,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color:
+                                        FlutterFlowTheme.of(context).background,
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color:
+                                        FlutterFlowTheme.of(context).background,
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    20, 24, 24, 24),
+                                prefixIcon: Icon(
+                                  Icons.attach_money_rounded,
+                                  color: FlutterFlowTheme.of(context).textColor,
+                                  size: 32,
+                                ),
+                              ),
+                              style: FlutterFlowTheme.of(context).title1,
+                              textAlign: TextAlign.center,
+                              keyboardType: TextInputType.number,
+                              validator: (val) {
+                                if (val == null || val.isEmpty) {
+                                  return 'Please enter an amount';
+                                }
+
+                                return null;
+                              },
+                            ).animated([
+                              animationsMap['textFieldOnPageLoadAnimation']
+                            ]),
+                          ),
                         ),
-                        decoration: BoxDecoration(),
-                        child: Padding(
+                        Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                           child: TextFormField(
-                            controller: textController1,
+                            controller: budgetNameController,
                             obscureText: false,
                             decoration: InputDecoration(
-                              labelText: 'Amount',
-                              labelStyle: FlutterFlowTheme.of(context)
-                                  .title1
-                                  .override(
-                                    fontFamily: 'Lexend Deca',
-                                    color:
-                                        FlutterFlowTheme.of(context).grayLight,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                              hintStyle: FlutterFlowTheme.of(context)
-                                  .title1
-                                  .override(
-                                    fontFamily: 'Lexend Deca',
-                                    color:
-                                        FlutterFlowTheme.of(context).grayLight,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                              enabledBorder: UnderlineInputBorder(
+                              labelStyle:
+                                  FlutterFlowTheme.of(context).subtitle1,
+                              hintText: 'Loan Name',
+                              hintStyle: FlutterFlowTheme.of(context).bodyText1,
+                              enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color:
                                       FlutterFlowTheme.of(context).background,
@@ -170,7 +231,7 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                                 ),
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              focusedBorder: UnderlineInputBorder(
+                              focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color:
                                       FlutterFlowTheme.of(context).background,
@@ -179,98 +240,183 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                  20, 24, 24, 24),
-                              prefixIcon: Icon(
-                                Icons.attach_money_rounded,
-                                color: FlutterFlowTheme.of(context).textColor,
-                                size: 32,
-                              ),
+                                  20, 32, 24, 32),
                             ),
-                            style: FlutterFlowTheme.of(context).title1,
-                            textAlign: TextAlign.center,
-                            keyboardType: TextInputType.number,
-                            validator: (val) {
-                              if (val == null || val.isEmpty) {
-                                return 'Please enter an amount';
-                              }
-
-                              return null;
+                            style: FlutterFlowTheme.of(context).title3,
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                          child: TextFormField(
+                            controller: textController3,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelStyle:
+                                  FlutterFlowTheme.of(context).bodyText1,
+                              hintText: 'Description',
+                              hintStyle: FlutterFlowTheme.of(context).bodyText1,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color:
+                                      FlutterFlowTheme.of(context).background,
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color:
+                                      FlutterFlowTheme.of(context).background,
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              contentPadding:
+                                  EdgeInsetsDirectional.fromSTEB(20, 40, 24, 0),
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyText1
+                                .override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: FlutterFlowTheme.of(context).textColor,
+                                ),
+                            textAlign: TextAlign.start,
+                            maxLines: 4,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                          child: FlutterFlowRadioButton(
+                            options:
+                                ['Lend to Contact', 'Fina a Borrower'].toList(),
+                            onChanged: (value) {
+                              setState(() => radioButtonValue = value);
                             },
-                          ).animated(
-                              [animationsMap['textFieldOnPageLoadAnimation']]),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                        child: TextFormField(
-                          controller: budgetNameController,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelStyle: FlutterFlowTheme.of(context).subtitle1,
-                            hintText: 'Loan Name',
-                            hintStyle: FlutterFlowTheme.of(context).bodyText1,
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).background,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).background,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            contentPadding:
-                                EdgeInsetsDirectional.fromSTEB(20, 32, 24, 32),
+                            optionHeight: 25,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .bodyText1
+                                .override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: FlutterFlowTheme.of(context).textColor,
+                                ),
+                            buttonPosition: RadioButtonPosition.left,
+                            direction: Axis.horizontal,
+                            radioButtonColor: Colors.blue,
+                            inactiveRadioButtonColor:
+                                FlutterFlowTheme.of(context).textColor,
+                            toggleable: false,
+                            horizontalAlignment: WrapAlignment.start,
+                            verticalAlignment: WrapCrossAlignment.start,
                           ),
-                          style: FlutterFlowTheme.of(context).title3,
-                          textAlign: TextAlign.start,
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                        child: TextFormField(
-                          controller: textController3,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelStyle: FlutterFlowTheme.of(context).bodyText1,
-                            hintText: 'Description',
-                            hintStyle: FlutterFlowTheme.of(context).bodyText1,
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).background,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).background,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            contentPadding:
-                                EdgeInsetsDirectional.fromSTEB(20, 40, 24, 0),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                          child: Text(
+                            'Risk Tolorance',
+                            style: FlutterFlowTheme.of(context).bodyText1,
                           ),
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Lexend Deca',
-                                color: FlutterFlowTheme.of(context).textColor,
-                              ),
-                          textAlign: TextAlign.start,
-                          maxLines: 4,
                         ),
-                      ),
-                      Text(
-                        'Only  can lend up to \$1000',
-                        style: FlutterFlowTheme.of(context).bodyText1,
-                      ),
-                    ],
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RatingBar.builder(
+                                onRatingUpdate: (newValue) =>
+                                    setState(() => ratingBarValue = newValue),
+                                itemBuilder: (context, index) => Icon(
+                                  Icons.star_rounded,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryColor,
+                                ),
+                                direction: Axis.horizontal,
+                                initialRating: ratingBarValue ??= 3,
+                                unratedColor: Color(0xFF9E9E9E),
+                                itemCount: 5,
+                                itemSize: 40,
+                                glowColor:
+                                    FlutterFlowTheme.of(context).secondaryColor,
+                              ),
+                              FlutterFlowIconButton(
+                                borderColor: Color(0x00FFFFFF),
+                                borderRadius: 30,
+                                borderWidth: 1,
+                                buttonSize: 60,
+                                icon: Icon(
+                                  Icons.info_sharp,
+                                  color: FlutterFlowTheme.of(context).textColor,
+                                  size: 30,
+                                ),
+                                onPressed: () {
+                                  print('IconButton pressed ...');
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        if ((ratingBarValue) == (ratingBarValue))
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                            child: Text(
+                              'The more stars a customer has the lower the risk tolorance ',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context).bodyText1,
+                            ),
+                          ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                          child: FlutterFlowDropDown(
+                            options: ['2 payments', '4 payments'].toList(),
+                            onChanged: (val) =>
+                                setState(() => dropDownValue1 = val),
+                            width: 180,
+                            height: 50,
+                            textStyle:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Colors.black,
+                                    ),
+                            hintText: '# of payments',
+                            fillColor: Colors.white,
+                            elevation: 2,
+                            borderColor: Colors.transparent,
+                            borderWidth: 0,
+                            borderRadius: 0,
+                            margin:
+                                EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
+                            hidesUnderline: true,
+                          ),
+                        ),
+                        FlutterFlowDropDown(
+                          options: [
+                            '10 miles',
+                            '25 miles',
+                            '50 miles',
+                            'anywhere'
+                          ].toList(),
+                          onChanged: (val) =>
+                              setState(() => dropDownValue2 = val),
+                          width: 180,
+                          height: 50,
+                          textStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Colors.black,
+                                  ),
+                          hintText: 'Loan Radius',
+                          fillColor: Colors.white,
+                          elevation: 2,
+                          borderColor: Colors.transparent,
+                          borderWidth: 0,
+                          borderRadius: 0,
+                          margin: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
+                          hidesUnderline: true,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -322,9 +468,15 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                                 budetName: budgetNameController.text,
                                 budgetAmount: textController1.text,
                                 budgetCreated: getCurrentTimestamp,
-                                budgetDescription: textController3.text,
+                                budgetDescription: valueOrDefault<String>(
+                                  textController3.text,
+                                  '-',
+                                ),
                                 budgetTime: '29 days left',
                                 userBudgets: buttonBudgetListRecord.budgetUser,
+                                loanRiskTolorance: ratingBarValue.round(),
+                                loanLocation: currentUserDocument?.location,
+                                paymentStructure: dropDownValue1,
                               );
                               await BudgetsRecord.collection
                                   .doc()

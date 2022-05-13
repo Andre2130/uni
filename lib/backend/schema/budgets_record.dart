@@ -35,6 +35,17 @@ abstract class BudgetsRecord
   String get budgetTime;
 
   @nullable
+  @BuiltValueField(wireName: 'LoanRiskTolorance')
+  int get loanRiskTolorance;
+
+  @nullable
+  @BuiltValueField(wireName: 'LoanLocation')
+  LatLng get loanLocation;
+
+  @nullable
+  String get paymentStructure;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -43,7 +54,9 @@ abstract class BudgetsRecord
     ..budgetAmount = ''
     ..budgetDescription = ''
     ..budgetSpent = ''
-    ..budgetTime = '';
+    ..budgetTime = ''
+    ..loanRiskTolorance = 0
+    ..paymentStructure = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('budgets');
@@ -75,6 +88,9 @@ Map<String, dynamic> createBudgetsRecordData({
   String budgetSpent,
   DateTime budgetStartDate,
   String budgetTime,
+  int loanRiskTolorance,
+  LatLng loanLocation,
+  String paymentStructure,
 }) =>
     serializers.toFirestore(
         BudgetsRecord.serializer,
@@ -86,4 +102,7 @@ Map<String, dynamic> createBudgetsRecordData({
           ..userBudgets = userBudgets
           ..budgetSpent = budgetSpent
           ..budgetStartDate = budgetStartDate
-          ..budgetTime = budgetTime));
+          ..budgetTime = budgetTime
+          ..loanRiskTolorance = loanRiskTolorance
+          ..loanLocation = loanLocation
+          ..paymentStructure = paymentStructure));

@@ -339,7 +339,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                   controller: yourAgeController,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: 'Your Age',
+                    labelText: 'Date of Birth',
                     labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Lexend Deca',
                           color: FlutterFlowTheme.of(context).grayLight,
