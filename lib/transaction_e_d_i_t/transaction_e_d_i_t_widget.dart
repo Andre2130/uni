@@ -23,6 +23,11 @@ class TransactionEDITWidget extends StatefulWidget {
 
 class _TransactionEDITWidgetState extends State<TransactionEDITWidget>
     with TickerProviderStateMixin {
+  TextEditingController reasonController;
+  TextEditingController spentAtController;
+  TextEditingController textController1;
+  final formKey = GlobalKey<FormState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
     'textFieldOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -66,11 +71,6 @@ class _TransactionEDITWidgetState extends State<TransactionEDITWidget>
       ),
     ),
   };
-  final formKey = GlobalKey<FormState>();
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-  TextEditingController reasonController;
-  TextEditingController spentAtController;
-  TextEditingController textController1;
 
   @override
   void initState() {

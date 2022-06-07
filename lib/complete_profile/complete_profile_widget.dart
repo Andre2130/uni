@@ -7,7 +7,6 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import '../onboarding/onboarding_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -339,7 +338,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                   controller: yourAgeController,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: 'Date of Birth',
+                    labelText: 'Age',
                     labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Lexend Deca',
                           color: FlutterFlowTheme.of(context).grayLight,
@@ -386,7 +385,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                           fontFamily: 'Lexend Deca',
                           color: FlutterFlowTheme.of(context).grayLight,
                         ),
-                    hintText: 'What is your position?',
+                    hintText: 'What is your address?',
                     hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Lexend Deca',
                           color: Color(0x98FFFFFF),
@@ -437,14 +436,6 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                     final buttonLoginUsersRecord = snapshot.data;
                     return FFButtonWidget(
                       onPressed: () async {
-                        final usersUpdateData = createUsersRecordData(
-                          displayName: yourNameController2.text,
-                          age: int.parse(yourAgeController.text),
-                          userTitle: yourTitleController.text,
-                          photoUrl: '',
-                        );
-                        await buttonLoginUsersRecord.reference
-                            .update(usersUpdateData);
                         await Navigator.push(
                           context,
                           MaterialPageRoute(

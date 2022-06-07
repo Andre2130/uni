@@ -264,7 +264,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                       children: [
                                         Expanded(
                                           child: Text(
-                                            'Budget Analysis',
+                                            'Payment Analysis',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .title1,
@@ -281,7 +281,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                       children: [
                                         Expanded(
                                           child: Text(
-                                            'Know where your budgets are and how they can be adjusted.',
+                                            'Know what budgets work for you and how they can be adjusted.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2

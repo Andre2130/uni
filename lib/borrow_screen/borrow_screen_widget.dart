@@ -120,7 +120,7 @@ class _BorrowScreenWidgetState extends State<BorrowScreenWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                       child: FlutterFlowDropDown(
-                        options: ['2 payments', '4 payments'].toList(),
+                        options: ['2 payments', '4 payments'],
                         onChanged: (val) => setState(() => dropDownValue = val),
                         width: 180,
                         height: 50,
@@ -247,8 +247,8 @@ class _BorrowScreenWidgetState extends State<BorrowScreenWidget> {
                 color: FlutterFlowTheme.of(context).textColor,
                 size: 30,
               ),
-              onPressed: () {
-                print('IconButton pressed ...');
+              onPressed: () async {
+                Navigator.pop(context);
               },
             ),
           ),

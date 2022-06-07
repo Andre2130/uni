@@ -152,7 +152,7 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                       child: FlutterFlowDropDown(
-                        options: ['High Risk ', 'Low Risk'].toList(),
+                        options: ['High Risk ', 'Low Risk'],
                         onChanged: (val) => setState(() => dropDownValue = val),
                         width: MediaQuery.of(context).size.width * 0.9,
                         height: 60,

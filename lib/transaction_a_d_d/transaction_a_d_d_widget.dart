@@ -215,7 +215,7 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                           child: Align(
                             alignment: AlignmentDirectional(-1, -0.4),
                             child: FlutterFlowDropDown(
-                              options: ['2  Payments ', '4 Payments'].toList(),
+                              options: ['2  Payments ', '4 Payments'],
                               onChanged: (val) =>
                                   setState(() => dropDownValue = val),
                               width: 180,
@@ -317,9 +317,9 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                                 final loanCreateData = createLoanRecordData(
                                   loanName: '',
                                   loanAmount: '',
-                                  loanCreated: calendarSelectedDay.start,
+                                  loanCreated: calendarSelectedDay?.start,
                                   loanDescription: '',
-                                  loanPayback: calendarSelectedDay.end,
+                                  loanPayback: calendarSelectedDay?.end,
                                   nUmberOfPayments: valueOrDefault<String>(
                                     dropDownValue,
                                     'Pay back in fulll',

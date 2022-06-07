@@ -334,7 +334,7 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                           'Internal Transfer',
                           'External Transfer',
                           'ACH Payment'
-                        ].toList(),
+                        ],
                         onChanged: (val) =>
                             setState(() => dropDownValue1 = val),
                         width: MediaQuery.of(context).size.width * 0.9,
@@ -367,7 +367,7 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                           'Account ****2010',
                           'Account ****2011',
                           'Account ****2012'
-                        ].toList(),
+                        ],
                         onChanged: (val) =>
                             setState(() => dropDownValue2 = val),
                         width: MediaQuery.of(context).size.width * 0.9,

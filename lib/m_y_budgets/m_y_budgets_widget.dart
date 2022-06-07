@@ -395,7 +395,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(0, 0, 4, 0),
                                                   child: Text(
-                                                    'Total Spent',
+                                                    'Loan Balance',
                                                     textAlign: TextAlign.end,
                                                     style: FlutterFlowTheme.of(
                                                             context)

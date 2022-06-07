@@ -19,10 +19,10 @@ class LoginPageWidget extends StatefulWidget {
 }
 
 class _LoginPageWidgetState extends State<LoginPageWidget> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController emailAddressLoginController;
   TextEditingController passwordLoginController;
   bool passwordLoginVisibility;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -241,6 +241,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                     () => passwordLoginVisibility =
                                                         !passwordLoginVisibility,
                                                   ),
+                                                  focusNode: FocusNode(
+                                                      skipTraversal: true),
                                                   child: Icon(
                                                     passwordLoginVisibility
                                                         ? Icons
@@ -477,39 +479,59 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       ),
                                     ),
                                   ),
-                                  Align(
-                                    alignment: AlignmentDirectional(0, 0.75),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 20, 0, 0),
-                                      child: FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
-                                        },
-                                        text: 'Sign in with Apple',
-                                        icon: FaIcon(
-                                          FontAwesomeIcons.apple,
-                                          size: 20,
-                                        ),
-                                        options: FFButtonOptions(
-                                          width: 230,
-                                          height: 44,
-                                          color: Colors.white,
-                                          textStyle: GoogleFonts.getFont(
-                                            'Roboto',
-                                            color: Colors.black,
-                                            fontSize: 17,
+                                  isAndroid
+                                      ? Container()
+                                      : Align(
+                                          alignment:
+                                              AlignmentDirectional(0, 0.75),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 20, 0, 0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                final user =
+                                                    await signInWithApple(
+                                                        context);
+                                                if (user == null) {
+                                                  return;
+                                                }
+                                                await Navigator
+                                                    .pushAndRemoveUntil(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        NavBarPage(
+                                                            initialPage:
+                                                                'homePage_alt_1'),
+                                                  ),
+                                                  (r) => false,
+                                                );
+                                              },
+                                              text: 'Sign in with Apple',
+                                              icon: FaIcon(
+                                                FontAwesomeIcons.apple,
+                                                size: 20,
+                                              ),
+                                              options: FFButtonOptions(
+                                                width: 230,
+                                                height: 44,
+                                                color: Colors.white,
+                                                textStyle: GoogleFonts.getFont(
+                                                  'Roboto',
+                                                  color: Colors.black,
+                                                  fontSize: 17,
+                                                ),
+                                                elevation: 4,
+                                                borderSide: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 0,
+                                                ),
+                                                borderRadius: 12,
+                                              ),
+                                            ),
                                           ),
-                                          elevation: 4,
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 0,
-                                          ),
-                                          borderRadius: 12,
                                         ),
-                                      ),
-                                    ),
-                                  ),
                                   Align(
                                     alignment: AlignmentDirectional(0, 0),
                                     child: Container(
@@ -524,8 +546,24 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0, 10, 0, 0),
                                               child: FFButtonWidget(
-                                                onPressed: () {
-                                                  print('Button pressed ...');
+                                                onPressed: () async {
+                                                  final user =
+                                                      await signInWithGoogle(
+                                                          context);
+                                                  if (user == null) {
+                                                    return;
+                                                  }
+                                                  await Navigator
+                                                      .pushAndRemoveUntil(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          NavBarPage(
+                                                              initialPage:
+                                                                  'homePage_alt_1'),
+                                                    ),
+                                                    (r) => false,
+                                                  );
                                                 },
                                                 text: 'Sign in with Google',
                                                 icon: Icon(
@@ -585,32 +623,45 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       ),
                     ],
                   ),
-                  FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                    },
-                    text: 'Sign in with Apple',
-                    icon: FaIcon(
-                      FontAwesomeIcons.apple,
-                      size: 20,
-                    ),
-                    options: FFButtonOptions(
-                      width: 230,
-                      height: 44,
-                      color: Colors.white,
-                      textStyle: GoogleFonts.getFont(
-                        'Roboto',
-                        color: Colors.black,
-                        fontSize: 17,
-                      ),
-                      elevation: 4,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 0,
-                      ),
-                      borderRadius: 12,
-                    ),
-                  ),
+                  isAndroid
+                      ? Container()
+                      : FFButtonWidget(
+                          onPressed: () async {
+                            final user = await signInWithApple(context);
+                            if (user == null) {
+                              return;
+                            }
+                            await Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    NavBarPage(initialPage: 'homePage_alt_1'),
+                              ),
+                              (r) => false,
+                            );
+                          },
+                          text: 'Sign in with Apple',
+                          icon: FaIcon(
+                            FontAwesomeIcons.apple,
+                            size: 20,
+                          ),
+                          options: FFButtonOptions(
+                            width: 230,
+                            height: 44,
+                            color: Colors.white,
+                            textStyle: GoogleFonts.getFont(
+                              'Roboto',
+                              color: Colors.black,
+                              fontSize: 17,
+                            ),
+                            elevation: 4,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 0,
+                            ),
+                            borderRadius: 12,
+                          ),
+                        ),
                 ],
               ),
             ],

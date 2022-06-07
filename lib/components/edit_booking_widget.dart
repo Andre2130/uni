@@ -142,7 +142,7 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                     'Doctors Visit',
                     'Routine Checkup',
                     'Scan/Update'
-                  ].toList(),
+                  ],
                   onChanged: (val) => setState(() => dropDownValue = val),
                   width: MediaQuery.of(context).size.width * 0.9,
                   height: 60,

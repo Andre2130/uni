@@ -15,8 +15,8 @@ class PhonesigninWidget extends StatefulWidget {
 }
 
 class _PhonesigninWidgetState extends State<PhonesigninWidget> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController phoneNumberController;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -193,7 +193,8 @@ class _PhonesigninWidgetState extends State<PhonesigninWidget> {
                           FFButtonWidget(
                             onPressed: () async {
                               final phoneNumberVal = phoneNumberController.text;
-                              if (phoneNumberVal.isEmpty ||
+                              if (phoneNumberVal == null ||
+                                  phoneNumberVal.isEmpty ||
                                   !phoneNumberVal.startsWith('+')) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

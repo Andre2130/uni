@@ -15,8 +15,8 @@ class PhonecodeWidget extends StatefulWidget {
 }
 
 class _PhonecodeWidgetState extends State<PhonecodeWidget> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController phoneNumberController;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -193,7 +193,7 @@ class _PhonecodeWidgetState extends State<PhonecodeWidget> {
                           FFButtonWidget(
                             onPressed: () async {
                               final smsCodeVal = phoneNumberController.text;
-                              if (smsCodeVal.isEmpty) {
+                              if (smsCodeVal == null || smsCodeVal.isEmpty) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content:

@@ -98,7 +98,10 @@ class _BorrowconfirmCopyCopyWidgetState
                 ),
                 child: AuthUserStreamWidget(
                   child: Image.network(
-                    currentUserPhoto,
+                    valueOrDefault<String>(
+                      currentUserPhoto,
+                      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/unidemo-ymjwk9/assets/ae94g49olm9p/Screen_Shot_2022-03-28_at_2.42.39_PM.png',
+                    ),
                     width: 100,
                     height: 100,
                     fit: BoxFit.cover,

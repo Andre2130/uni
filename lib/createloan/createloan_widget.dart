@@ -23,12 +23,12 @@ class CreateloanWidget extends StatefulWidget {
 
 class _CreateloanWidgetState extends State<CreateloanWidget>
     with TickerProviderStateMixin {
+  String dropDownValue1;
   String radioButtonValue;
   TextEditingController budgetNameController;
   TextEditingController textController1;
   TextEditingController textController3;
   double ratingBarValue;
-  String dropDownValue1;
   String dropDownValue2;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -72,6 +72,7 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
         autovalidateMode: AutovalidateMode.disabled,
         child: Column(
           mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Material(
               color: Colors.transparent,
@@ -174,7 +175,6 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                                           .grayLight,
                                       fontWeight: FontWeight.w300,
                                     ),
-                                hintText: '\$1000 max',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
@@ -378,7 +378,7 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                           child: FlutterFlowDropDown(
-                            options: ['2 payments', '4 payments'].toList(),
+                            options: ['2 payments', '4 payments'],
                             onChanged: (val) =>
                                 setState(() => dropDownValue1 = val),
                             width: 180,
@@ -405,7 +405,7 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                             '25 miles',
                             '50 miles',
                             'anywhere'
-                          ].toList(),
+                          ],
                           onChanged: (val) =>
                               setState(() => dropDownValue2 = val),
                           width: 180,
@@ -439,93 +439,127 @@ class _CreateloanWidgetState extends State<CreateloanWidget>
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      StreamBuilder<List<BudgetListRecord>>(
-                        stream: queryBudgetListRecord(
-                          queryBuilder: (budgetListRecord) =>
-                              budgetListRecord.where('budgetUser',
-                                  isEqualTo: currentUserReference),
-                          singleRecord: true,
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 40,
-                                height: 40,
-                                child: SpinKitPumpingHeart(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
-                                  size: 40,
-                                ),
-                              ),
-                            );
-                          }
-                          List<BudgetListRecord> buttonBudgetListRecordList =
-                              snapshot.data;
-                          // Return an empty Container when the document does not exist.
-                          if (snapshot.data.isEmpty) {
-                            return Container();
-                          }
-                          final buttonBudgetListRecord =
-                              buttonBudgetListRecordList.isNotEmpty
-                                  ? buttonBudgetListRecordList.first
-                                  : null;
-                          return FFButtonWidget(
-                            onPressed: () async {
-                              final budgetsCreateData = createBudgetsRecordData(
-                                budetName: budgetNameController.text,
-                                budgetAmount: textController1.text,
-                                budgetCreated: getCurrentTimestamp,
-                                budgetDescription: valueOrDefault<String>(
-                                  textController3.text,
-                                  '-',
-                                ),
-                                budgetTime: '29 days left',
-                                userBudgets: buttonBudgetListRecord.budgetUser,
-                                loanRiskTolorance: ratingBarValue.round(),
-                                loanLocation: currentUserDocument?.location,
-                                paymentStructure: dropDownValue1,
-                              );
-                              await BudgetsRecord.collection
-                                  .doc()
-                                  .set(budgetsCreateData);
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => LoanconfirmWidget(
-                                    amount: double.parse(textController1.text),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                        child: StreamBuilder<List<BudgetListRecord>>(
+                          stream: queryBudgetListRecord(
+                            queryBuilder: (budgetListRecord) =>
+                                budgetListRecord.where('budgetUser',
+                                    isEqualTo: currentUserReference),
+                            singleRecord: true,
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 40,
+                                  height: 40,
+                                  child: SpinKitPumpingHeart(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                    size: 40,
                                   ),
                                 ),
                               );
-                            },
-                            text: 'Next',
-                            options: FFButtonOptions(
-                              width: 300,
-                              height: 70,
-                              color: FlutterFlowTheme.of(context).tertiaryColor,
-                              textStyle: FlutterFlowTheme.of(context).title1,
-                              elevation: 0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
+                            }
+                            List<BudgetListRecord> buttonBudgetListRecordList =
+                                snapshot.data;
+                            // Return an empty Container when the document does not exist.
+                            if (snapshot.data.isEmpty) {
+                              return Container();
+                            }
+                            final buttonBudgetListRecord =
+                                buttonBudgetListRecordList.isNotEmpty
+                                    ? buttonBudgetListRecordList.first
+                                    : null;
+                            return FFButtonWidget(
+                              onPressed: () async {
+                                final budgetsCreateData =
+                                    createBudgetsRecordData(
+                                  budetName: budgetNameController.text,
+                                  budgetAmount: textController1.text,
+                                  budgetCreated: getCurrentTimestamp,
+                                  budgetDescription: valueOrDefault<String>(
+                                    textController3.text,
+                                    '-',
+                                  ),
+                                  budgetTime: '29 days left',
+                                  userBudgets:
+                                      buttonBudgetListRecord.budgetUser,
+                                  loanRiskTolorance: ratingBarValue.round(),
+                                  loanLocation: currentUserDocument?.location,
+                                  paymentStructure: dropDownValue1,
+                                );
+                                await BudgetsRecord.collection
+                                    .doc()
+                                    .set(budgetsCreateData);
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoanconfirmWidget(
+                                      amount:
+                                          double.parse(textController1.text),
+                                    ),
+                                  ),
+                                );
+                              },
+                              text: 'Next',
+                              options: FFButtonOptions(
+                                width: 300,
+                                height: 70,
+                                color:
+                                    FlutterFlowTheme.of(context).tertiaryColor,
+                                textStyle: FlutterFlowTheme.of(context).title1,
+                                elevation: 0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1,
+                                ),
+                                borderRadius: 12,
                               ),
-                              borderRadius: 12,
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-            Text(
-              'Tap above to complete request',
-              style: FlutterFlowTheme.of(context).bodyText1.override(
-                    fontFamily: 'Lexend Deca',
-                    color: Color(0x43000000),
+            InkWell(
+              onTap: () async {
+                final budgetsCreateData = createBudgetsRecordData(
+                  budetName: budgetNameController.text,
+                  budgetAmount: textController1.text,
+                  budgetCreated: getCurrentTimestamp,
+                  budgetDescription: valueOrDefault<String>(
+                    textController3.text,
+                    '-',
                   ),
+                  budgetTime: '29 days left',
+                  userBudgets: currentUserReference,
+                  loanRiskTolorance: ratingBarValue.round(),
+                  loanLocation: currentUserDocument?.location,
+                  paymentStructure: dropDownValue1,
+                );
+                await BudgetsRecord.collection.doc().set(budgetsCreateData);
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoanconfirmWidget(
+                      amount: double.parse(textController1.text),
+                    ),
+                  ),
+                );
+              },
+              child: Text(
+                'Tap here or above to complete request',
+                style: FlutterFlowTheme.of(context).bodyText1.override(
+                      fontFamily: 'Lexend Deca',
+                      color: Color(0x43000000),
+                    ),
+              ),
             ),
           ],
         ),

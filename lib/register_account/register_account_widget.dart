@@ -4,8 +4,8 @@ import '../complete_profile/complete_profile_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../forgot_password/forgot_password_widget.dart';
 import '../login_page/login_page_widget.dart';
-import '../main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -19,12 +19,12 @@ class RegisterAccountWidget extends StatefulWidget {
 }
 
 class _RegisterAccountWidgetState extends State<RegisterAccountWidget> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController emailAddressController;
   TextEditingController passwordCreateController;
   bool passwordCreateVisibility;
   TextEditingController passwordConfirmController;
   bool passwordConfirmVisibility;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -206,6 +206,7 @@ class _RegisterAccountWidgetState extends State<RegisterAccountWidget> {
                                         () => passwordCreateVisibility =
                                             !passwordCreateVisibility,
                                       ),
+                                      focusNode: FocusNode(skipTraversal: true),
                                       child: Icon(
                                         passwordCreateVisibility
                                             ? Icons.visibility_outlined
@@ -270,6 +271,7 @@ class _RegisterAccountWidgetState extends State<RegisterAccountWidget> {
                                         () => passwordConfirmVisibility =
                                             !passwordConfirmVisibility,
                                       ),
+                                      focusNode: FocusNode(skipTraversal: true),
                                       child: Icon(
                                         passwordConfirmVisibility
                                             ? Icons.visibility_outlined
@@ -293,8 +295,8 @@ class _RegisterAccountWidgetState extends State<RegisterAccountWidget> {
                                     0, 24, 120, 24),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    if (passwordCreateController.text !=
-                                        passwordConfirmController.text) {
+                                    if (passwordCreateController?.text !=
+                                        passwordConfirmController?.text) {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
@@ -314,6 +316,8 @@ class _RegisterAccountWidgetState extends State<RegisterAccountWidget> {
                                     if (user == null) {
                                       return;
                                     }
+
+                                    await sendEmailVerification();
 
                                     final budgetListCreateData =
                                         createBudgetListRecordData(
@@ -428,25 +432,11 @@ class _RegisterAccountWidgetState extends State<RegisterAccountWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            final user = await signInAnonymously(context);
-                            if (user == null) {
-                              return;
-                            }
-
-                            final budgetListCreateData =
-                                createBudgetListRecordData(
-                              budgetUser: currentUserReference,
-                            );
-                            await BudgetListRecord.collection
-                                .doc()
-                                .set(budgetListCreateData);
-                            await Navigator.pushAndRemoveUntil(
+                            await Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    NavBarPage(initialPage: 'homePage_alt_1'),
+                                builder: (context) => ForgotPasswordWidget(),
                               ),
-                              (r) => false,
                             );
                           },
                           text: 'Forgot Password ',
